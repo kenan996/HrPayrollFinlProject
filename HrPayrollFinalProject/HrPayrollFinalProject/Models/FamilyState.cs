@@ -8,6 +8,7 @@ namespace HrPayrollFinalProject.Models
     public enum FamilyState
     {
         Single = 1,
-        Married = 2
+        Engaged = 2,
+        Married = 3
     }
 }

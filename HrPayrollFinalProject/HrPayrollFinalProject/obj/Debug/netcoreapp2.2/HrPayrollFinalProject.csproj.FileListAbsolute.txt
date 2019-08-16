@@ -5,7 +5,6 @@ C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\bin\Debug\netcoreapp2.2\HrPayrollFinalProject.pdb
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\bin\Debug\netcoreapp2.2\HrPayrollFinalProject.Views.dll
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\bin\Debug\netcoreapp2.2\HrPayrollFinalProject.Views.pdb
-C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\HrPayrollFinalProject.csprojAssemblyReference.cache
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\HrPayrollFinalProject.csproj.CoreCompileInputs.cache
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\HrPayrollFinalProject.RazorAssemblyInfo.cache
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\HrPayrollFinalProject.RazorAssemblyInfo.cs
