@@ -23,9 +23,11 @@ namespace HrPayrollFinalProject.Models
         public Employees Employees { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
+        [Display(Name ="Entry date")]
         public DateTime EntryDate { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
+        [Display(Name ="End Date")]
         public DateTime EndDate { get; set; }
     }
 }

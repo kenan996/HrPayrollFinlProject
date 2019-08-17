@@ -23,6 +23,7 @@ namespace HrPayrollFinalProject.Models
         [Required]
         public int Salary { get; set; }
         [Required]
+        [Display(Name ="To Salary")]
         public int TotalSalary { get; set; }
     }
 }

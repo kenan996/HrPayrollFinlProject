@@ -27,3 +27,4 @@ C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\HrPayrollFinalProject.dll
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\HrPayrollFinalProject.pdb
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\HrPayrollFinalProject.csproj.CopyComplete
+C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\HrPayrollFinalProject.csprojAssemblyReference.cache

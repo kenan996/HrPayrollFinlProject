@@ -14,25 +14,33 @@ namespace HrPayrollFinalProject.Models
         [Required]
         public string Surname { get; set; }
         [Required]
+        [Display(Name ="Fathers Name")]
         public string FathersName { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
+        [Display(Name ="Birth Date")]
         public DateTime BirthDate { get; set; }
         [Required]
         public string Adress { get; set; }
         [Required]
         public string Influnce { get; set; }
         [Required]
+        [Display(Name ="Passport No")]
         public string PassportNo { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
+        [Display(Name ="Passport Expire Date")]
         public DateTime PassportExpireDate { get; set; }
         [Required]
         public Education Education { get; set; }
         [Required]
+        [Display(Name ="Family State")]
         public FamilyState FamilyState { get; set; }
         [Required]
         public bool Gender { get; set; }
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        public string Photo { get; set; }
 
         public virtual ICollection<Branch> Branches { get; set; }
         public virtual ICollection<OldWorkPlace> OldWorkPlaces { get; set; }

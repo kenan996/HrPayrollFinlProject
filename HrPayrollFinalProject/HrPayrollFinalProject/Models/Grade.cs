@@ -17,8 +17,10 @@ namespace HrPayrollFinalProject.Models
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
         [Required]
+        [Display(Name ="From Amount")]
         public decimal FromAmount { get; set; }
         [Required]
+        [Display(Name ="To Amount")]
         public decimal ToAmount { get; set; }
         [Required]
         public int Bonus { get; set; }

@@ -10,14 +10,18 @@ namespace HrPayrollFinalProject.Models
     {
         public int Id { get; set; }
         [Required]
+        [Display(Name ="Work Place Name")]
         public string WorkPLaceName { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
+        [Display(Name ="Fire Date")]
         public DateTime FireDate { get; set; }
-        [Required]
+        [Required]  
         [DataType(DataType.DateTime)]
+        [Display(Name = "Hire Date")]
         public DateTime HireDate { get; set; }
         [Required]
+        [Display(Name ="Hire Reason")]
         public string FireReason { get; set; }
         [Required]
         public int EmployeesId { get; set; }

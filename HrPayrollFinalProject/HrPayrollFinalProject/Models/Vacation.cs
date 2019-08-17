@@ -11,9 +11,11 @@ namespace HrPayrollFinalProject.Models
         public int Id { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
+        [Display(Name ="Start Date")]
         public DateTime StartDate { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
+        [Display(Name = "End Date")]
         public DateTime EndDate { get; set; }
         [Required]
         public int EmployeesId { get; set; }
