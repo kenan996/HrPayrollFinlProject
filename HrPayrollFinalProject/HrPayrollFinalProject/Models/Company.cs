@@ -11,11 +11,10 @@ namespace HrPayrollFinalProject.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required]
         public int HoldingId { get; set; }
         [Required]
         public Holding Holding { get; set; }
         public virtual ICollection<Salary> Salaries { get; set; }
-        public virtual ICollection<Branch> Branches { get; set; }
+        public virtual ICollection<Position> Positions { get; set; }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HrPayrollFinalProject.Migrations
 {
     [DbContext(typeof(PayrollDbContext))]
-    [Migration("20190817075457_dbUpdate")]
-    partial class dbUpdate
+    [Migration("20190819084506_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,8 +48,6 @@ namespace HrPayrollFinalProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CompanyId");
-
                     b.Property<int>("EmployeesId");
 
                     b.Property<bool>("IsHead");
@@ -58,8 +56,6 @@ namespace HrPayrollFinalProject.Migrations
                         .IsRequired();
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
 
                     b.HasIndex("EmployeesId");
 
@@ -82,25 +78,6 @@ namespace HrPayrollFinalProject.Migrations
                     b.HasIndex("HoldingId");
 
                     b.ToTable("Companies");
-                });
-
-            modelBuilder.Entity("HrPayrollFinalProject.Models.CompanyDepartment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CompanyId");
-
-                    b.Property<int>("DepartmentId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("DepartmentId");
-
-                    b.ToTable("CompanyDepartments");
                 });
 
             modelBuilder.Entity("HrPayrollFinalProject.Models.Continuity", b =>
@@ -218,25 +195,6 @@ namespace HrPayrollFinalProject.Migrations
                     b.ToTable("Holdings");
                 });
 
-            modelBuilder.Entity("HrPayrollFinalProject.Models.HoldingDepartment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("DepartmentId");
-
-                    b.Property<int>("HoldingId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DepartmentId");
-
-                    b.HasIndex("HoldingId");
-
-                    b.ToTable("HoldingDepartments");
-                });
-
             modelBuilder.Entity("HrPayrollFinalProject.Models.OldWorkPlace", b =>
                 {
                     b.Property<int>("Id")
@@ -312,14 +270,26 @@ namespace HrPayrollFinalProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("BranchId");
+
+                    b.Property<int>("CompanyId");
+
                     b.Property<int>("DepartmentId");
+
+                    b.Property<int>("HoldingId");
 
                     b.Property<string>("Name")
                         .IsRequired();
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BranchId");
+
+                    b.HasIndex("CompanyId");
+
                     b.HasIndex("DepartmentId");
+
+                    b.HasIndex("HoldingId");
 
                     b.ToTable("Positions");
                 });
@@ -401,10 +371,6 @@ namespace HrPayrollFinalProject.Migrations
 
             modelBuilder.Entity("HrPayrollFinalProject.Models.Branch", b =>
                 {
-                    b.HasOne("HrPayrollFinalProject.Models.Company")
-                        .WithMany("Branches")
-                        .HasForeignKey("CompanyId");
-
                     b.HasOne("HrPayrollFinalProject.Models.Employees", "Employees")
                         .WithMany("Branches")
                         .HasForeignKey("EmployeesId")
@@ -416,19 +382,6 @@ namespace HrPayrollFinalProject.Migrations
                     b.HasOne("HrPayrollFinalProject.Models.Holding", "Holding")
                         .WithMany()
                         .HasForeignKey("HoldingId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("HrPayrollFinalProject.Models.CompanyDepartment", b =>
-                {
-                    b.HasOne("HrPayrollFinalProject.Models.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HrPayrollFinalProject.Models.Department", "Department")
-                        .WithMany()
-                        .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -445,19 +398,6 @@ namespace HrPayrollFinalProject.Migrations
                     b.HasOne("HrPayrollFinalProject.Models.Branch", "Branch")
                         .WithMany("Grades")
                         .HasForeignKey("BranchId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("HrPayrollFinalProject.Models.HoldingDepartment", b =>
-                {
-                    b.HasOne("HrPayrollFinalProject.Models.Department", "Department")
-                        .WithMany()
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HrPayrollFinalProject.Models.Holding", "Holding")
-                        .WithMany()
-                        .HasForeignKey("HoldingId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -487,9 +427,24 @@ namespace HrPayrollFinalProject.Migrations
 
             modelBuilder.Entity("HrPayrollFinalProject.Models.Position", b =>
                 {
+                    b.HasOne("HrPayrollFinalProject.Models.Branch", "Branch")
+                        .WithMany("Positions")
+                        .HasForeignKey("BranchId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("HrPayrollFinalProject.Models.Company", "Company")
+                        .WithMany("Positions")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("HrPayrollFinalProject.Models.Department", "Department")
                         .WithMany("Positions")
                         .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("HrPayrollFinalProject.Models.Holding", "Holding")
+                        .WithMany("Positions")
+                        .HasForeignKey("HoldingId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

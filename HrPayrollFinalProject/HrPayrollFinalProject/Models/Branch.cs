@@ -13,10 +13,10 @@ namespace HrPayrollFinalProject.Models
         public string Name { get; set; }
         [Required]
         public bool IsHead { get; set; }
-        [Required]
         public int EmployeesId { get; set; }
         [Required]
         public Employees Employees { get; set; }
         public virtual ICollection<Grade> Grades { get; set; }
+        public virtual ICollection<Position> Positions { get; set; }
     }
 }

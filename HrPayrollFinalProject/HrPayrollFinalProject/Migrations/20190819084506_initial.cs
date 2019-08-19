@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HrPayrollFinalProject.Migrations
 {
-    public partial class initialcatalog : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,7 +37,8 @@ namespace HrPayrollFinalProject.Migrations
                     PassportExpireDate = table.Column<DateTime>(nullable: false),
                     Education = table.Column<int>(nullable: false),
                     FamilyState = table.Column<int>(nullable: false),
-                    Gender = table.Column<bool>(nullable: false)
+                    Gender = table.Column<bool>(nullable: false),
+                    Photo = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,26 +59,6 @@ namespace HrPayrollFinalProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Positions",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: false),
-                    DepartmentId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Positions", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Positions_Departments_DepartmentId",
-                        column: x => x.DepartmentId,
-                        principalTable: "Departments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Bonus",
                 columns: table => new
                 {
@@ -93,6 +74,27 @@ namespace HrPayrollFinalProject.Migrations
                     table.PrimaryKey("PK_Bonus", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Bonus_employees_EmployeesId",
+                        column: x => x.EmployeesId,
+                        principalTable: "employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Branches",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: false),
+                    IsHead = table.Column<bool>(nullable: false),
+                    EmployeesId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Branches", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Branches_employees_EmployeesId",
                         column: x => x.EmployeesId,
                         principalTable: "employees",
                         principalColumn: "Id",
@@ -186,7 +188,7 @@ namespace HrPayrollFinalProject.Migrations
                         column: x => x.EmployeesId,
                         principalTable: "employees",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -231,83 +233,67 @@ namespace HrPayrollFinalProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HoldingDepartments",
+                name: "Grades",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    HoldingId = table.Column<int>(nullable: false),
-                    DepartmentId = table.Column<int>(nullable: false)
+                    BranchId = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
+                    FromAmount = table.Column<decimal>(nullable: false),
+                    ToAmount = table.Column<decimal>(nullable: false),
+                    Bonus = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HoldingDepartments", x => x.Id);
+                    table.PrimaryKey("PK_Grades", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HoldingDepartments_Departments_DepartmentId",
-                        column: x => x.DepartmentId,
-                        principalTable: "Departments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_HoldingDepartments_Holdings_HoldingId",
-                        column: x => x.HoldingId,
-                        principalTable: "Holdings",
+                        name: "FK_Grades_Branches_BranchId",
+                        column: x => x.BranchId,
+                        principalTable: "Branches",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Branches",
+                name: "Positions",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: false),
-                    IsHead = table.Column<bool>(nullable: false),
-                    EmployeesId = table.Column<int>(nullable: false),
-                    CompanyId = table.Column<int>(nullable: true)
+                    DepartmentId = table.Column<int>(nullable: false),
+                    BranchId = table.Column<int>(nullable: false),
+                    HoldingId = table.Column<int>(nullable: false),
+                    CompanyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Branches", x => x.Id);
+                    table.PrimaryKey("PK_Positions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Branches_Companies_CompanyId",
-                        column: x => x.CompanyId,
-                        principalTable: "Companies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Branches_employees_EmployeesId",
-                        column: x => x.EmployeesId,
-                        principalTable: "employees",
+                        name: "FK_Positions_Branches_BranchId",
+                        column: x => x.BranchId,
+                        principalTable: "Branches",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CompanyDepartments",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CompanyId = table.Column<int>(nullable: false),
-                    DepartmentId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CompanyDepartments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CompanyDepartments_Companies_CompanyId",
+                        name: "FK_Positions_Companies_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Companies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CompanyDepartments_Departments_DepartmentId",
+                        name: "FK_Positions_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Positions_Holdings_HoldingId",
+                        column: x => x.HoldingId,
+                        principalTable: "Holdings",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -334,29 +320,7 @@ namespace HrPayrollFinalProject.Migrations
                         column: x => x.PositionId,
                         principalTable: "Positions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Grades",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    BranchId = table.Column<int>(nullable: false),
-                    Date = table.Column<DateTime>(nullable: false),
-                    FromAmount = table.Column<decimal>(nullable: false),
-                    ToAmount = table.Column<decimal>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Grades", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Grades_Branches_BranchId",
-                        column: x => x.BranchId,
-                        principalTable: "Branches",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -391,18 +355,13 @@ namespace HrPayrollFinalProject.Migrations
                         column: x => x.PositionId,
                         principalTable: "Positions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bonus_EmployeesId",
                 table: "Bonus",
                 column: "EmployeesId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Branches_CompanyId",
-                table: "Branches",
-                column: "CompanyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Branches_EmployeesId",
@@ -415,16 +374,6 @@ namespace HrPayrollFinalProject.Migrations
                 column: "HoldingId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CompanyDepartments_CompanyId",
-                table: "CompanyDepartments",
-                column: "CompanyId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CompanyDepartments_DepartmentId",
-                table: "CompanyDepartments",
-                column: "DepartmentId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Continuities_EmployeesId",
                 table: "Continuities",
                 column: "EmployeesId");
@@ -433,16 +382,6 @@ namespace HrPayrollFinalProject.Migrations
                 name: "IX_Grades_BranchId",
                 table: "Grades",
                 column: "BranchId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_HoldingDepartments_DepartmentId",
-                table: "HoldingDepartments",
-                column: "DepartmentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_HoldingDepartments_HoldingId",
-                table: "HoldingDepartments",
-                column: "HoldingId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OldWorkPlaces_EmployeesId",
@@ -460,9 +399,24 @@ namespace HrPayrollFinalProject.Migrations
                 column: "EmployeesId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Positions_BranchId",
+                table: "Positions",
+                column: "BranchId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Positions_CompanyId",
+                table: "Positions",
+                column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Positions_DepartmentId",
                 table: "Positions",
                 column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Positions_HoldingId",
+                table: "Positions",
+                column: "HoldingId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Salaries_CompanyId",
@@ -501,16 +455,10 @@ namespace HrPayrollFinalProject.Migrations
                 name: "Bonus");
 
             migrationBuilder.DropTable(
-                name: "CompanyDepartments");
-
-            migrationBuilder.DropTable(
                 name: "Continuities");
 
             migrationBuilder.DropTable(
                 name: "Grades");
-
-            migrationBuilder.DropTable(
-                name: "HoldingDepartments");
 
             migrationBuilder.DropTable(
                 name: "OldWorkPlaces");
@@ -531,19 +479,19 @@ namespace HrPayrollFinalProject.Migrations
                 name: "WorkPlaces");
 
             migrationBuilder.DropTable(
-                name: "Branches");
+                name: "Positions");
 
             migrationBuilder.DropTable(
-                name: "Positions");
+                name: "Branches");
 
             migrationBuilder.DropTable(
                 name: "Companies");
 
             migrationBuilder.DropTable(
-                name: "employees");
+                name: "Departments");
 
             migrationBuilder.DropTable(
-                name: "Departments");
+                name: "employees");
 
             migrationBuilder.DropTable(
                 name: "Holdings");

@@ -11,11 +11,9 @@ namespace HrPayrollFinalProject.Models
         public int Id { get; set; }
         [Required]
         public decimal SalaryCost { get; set; }
-        [Required]
         public int PositionId { get; set; }
         [Required]
         public Position Position { get; set; }
-        [Required]
         public int CompanyId { get; set; }
         [Required]
         public Company Company { get; set; }
