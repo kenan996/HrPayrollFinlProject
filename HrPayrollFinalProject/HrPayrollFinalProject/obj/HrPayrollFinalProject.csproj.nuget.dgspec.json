@@ -63,6 +63,22 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.6.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.Web.LibraryManager.Build": {
+              "target": "Package",
+              "version": "[2.0.76, )"
+            },
+            "Microsoft.jQuery.Unobtrusive.Validation": {
+              "target": "Package",
+              "version": "[3.2.11, )"
+            },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[4.3.1, )"
             }
           },
           "imports": [

@@ -7,12 +7,22 @@
 
 
   <ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="3.2.11" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.0.76" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\jquery\" />
+    <Folder Include="wwwroot\lib\bootstrap\" />
   </ItemGroup>
 
 </Project>
