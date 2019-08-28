@@ -1,19 +1,19 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Pinkman I Data Table</title>
+    <title>Pinkman I Basic Table</title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="~/favicon.ico">
-    <link rel="icon" href="~/html/favicon.ico" type="~/html/image/x-icon">
+    <link rel="shortcut icon" href="~/html/favicon.ico">
+    <link rel="icon" href="~/html/favicon.ico" type="image/x-icon">
 
-    <!-- Data Table CSS -->
-    <link href="~/html/vendors/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/html/vendors/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap table CSS -->
+    <link href="~/html/vendors/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Toggles CSS -->
     <link href="~/html/vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
@@ -21,6 +21,7 @@
 
     <!-- Custom CSS -->
     <link href="~/html/dist/css/style.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
@@ -30,9 +31,10 @@
     </div>
     <!-- /Preloader -->
     <!-- HK Wrapper -->
+
     <div class="hk-wrapper hk-vertical-nav">
 
-        <!-- Top Navbar -->
+        <!-- Top Navbar Start -->
         <nav class="navbar navbar-expand-xl navbar-dark fixed-top hk-navbar">
             <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><i class="ion ion-ios-menu"></i></a>
             <a class="navbar-brand" href="dashboard1.html">
@@ -179,8 +181,8 @@
                 <a id="navbar_search_close" class="navbar-search-close" href="#"><i class="ion ion-ios-close"></i></a>
             </div>
         </form>
-        <!-- /Top Navbar -->
-        <!-- Vertical Nav -->
+        <!-- /Top Navbar End -->
+        <!-- Vertical Nav Start -->
         <nav class="hk-nav hk-nav-light">
             <a href="javascript:void(0);" id="hk_nav_close" class="hk-nav-close"><span class="feather-icon"><i data-feather="x"></i></span></a>
             <div class="nicescroll-bar">
@@ -191,8 +193,6 @@
                             <ul id="dash_drp" class="nav flex-column collapse collapse-level-1">
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
-
-
                                         <li class="nav-item">
                                             <a class="nav-link" href="dashboard3.html">Statistics</a>
                                         </li>
@@ -327,15 +327,16 @@
                         <span>UI</span>
                     </div>
                     <ul class="navbar-nav flex-column">
-                        <li>
-                            <ul id="content_drp" class="nav flex-column collapse collapse-level-1">
-                                <li class="nav-item">
-                                    <ul class="nav flex-column">
-                                    </ul>
-                                </li>
-                            </ul>
+                        </a>
+                        <ul id="content_drp" class="nav flex-column collapse collapse-level-1">
+                            <li class="nav-item">
+                                <ul class="nav flex-column">
+                                </ul>
+                            </li>
+                        </ul>
                         </li>
                         <li class="nav-item">
+
                             <ul id="utilities_drp" class="nav flex-column collapse collapse-level-1">
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
@@ -351,6 +352,7 @@
                             <ul id="forms_drp" class="nav flex-column collapse collapse-level-1">
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
+
 
                                         <li class="nav-item">
                                             <a class="nav-link" href="form-mask.html">Form Mask</a>
@@ -373,7 +375,6 @@
                             <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#tables_drp">
                                 <i class="ion ion-ios-today"></i>
                                 <span class="nav-link-text">Tables</span>
-
                             </a>
                             <ul id="tables_drp" class="nav flex-column collapse collapse-level-1">
                                 <li class="nav-item">
@@ -437,11 +438,34 @@
             </div>
         </nav>
         <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
-        <!-- /Vertical Nav -->
+        <!-- /Vertical Nav End -->
 
-    </div>
+        <div class="hk-pg-wrapper">
+          
+                @RenderBody()
 
-    @RenderBody()
+                <!-- Footer Start-->
+                <div class="hk-footer-wrap container">
+                    <footer class="footer">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <p>Pampered by<a href="https://hencework.com/" class="text-dark" target="_blank">Hencework</a> © 2019</p>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <p class="d-inline-block">Follow us</p>
+                                <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-facebook"></i></span></a>
+                                <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-twitter"></i></span></a>
+                                <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-google-plus"></i></span></a>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <!-- /Footer End-->
+   
+
+    <!-- HK Wrapper -->
     <!-- jQuery -->
     <script src="~/html/vendors/jquery/dist/jquery.min.js"></script>
 
@@ -452,26 +476,19 @@
     <!-- Slimscroll JavaScript -->
     <script src="~/html/dist/js/jquery.slimscroll.js"></script>
 
-    <!-- Data Table JavaScript -->
-    <script src="~/html/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="~/html/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/html/vendors/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
-    <script src="~/html/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="~/html/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-    <script src="~/html/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="~/html/vendors/jszip/dist/jszip.min.js"></script>
-    <script src="~/html/vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="~/html/vendors/pdfmake/build/vfs_fonts.js"></script>
-    <script src="~/html/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="~/html/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="~/html/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="~/html/dist/js/dataTables-data.js"></script>
-
     <!-- FeatherIcons JavaScript -->
     <script src="~/html/dist/js/feather.min.js"></script>
 
     <!-- Fancy Dropdown JS -->
     <script src="~/html/dist/js/dropdown-bootstrap-extended.js"></script>
+
+    <!-- Bootstrap-table JavaScript -->
+    <script src="~/html/vendors/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="~/html/dist/js/bootstrap-table-data.js"></script>
+
+    <!-- Peity JavaScript -->
+    <script src="~/html/vendors/peity/jquery.peity.min.js"></script>
+    <script src="~/html/dist/js/peity-data.js"></script>
 
     <!-- Toggles JavaScript -->
     <script src="~/html/vendors/jquery-toggles/toggles.min.js"></script>
@@ -479,6 +496,7 @@
 
     <!-- Init JavaScript -->
     <script src="~/html/dist/js/init.js"></script>
-    @RenderSection("Scripts",false) 
+    @RenderSection("Scripts", required: false)
 </body>
+
 </html>

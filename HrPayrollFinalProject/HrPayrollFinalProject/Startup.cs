@@ -1,7 +1,9 @@
 ﻿using HrPayrollFinalProject.DAL;
+using HrPayrollFinalProject.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -32,7 +34,10 @@ namespace HrPayrollFinalProject
             {
                 x.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
             });
-
+            services.AddIdentity<AppUser, IdentityRole>()
+                 .AddEntityFrameworkStores<PayrollDbContext>()
+                 .AddDefaultTokenProviders();
+                               
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -52,6 +57,8 @@ namespace HrPayrollFinalProject
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseStatusCodePages();
+            app.UseAuthentication();
             app.UseCookiePolicy();
             
             app.UseMvc(routes =>

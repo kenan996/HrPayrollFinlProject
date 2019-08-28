@@ -1,4 +1,5 @@
 ﻿using HrPayrollFinalProject.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HrPayrollFinalProject.DAL
 {
-    public class PayrollDbContext:DbContext
+    public class PayrollDbContext : IdentityDbContext<AppUser>
     {
         public PayrollDbContext(DbContextOptions<PayrollDbContext> options) : base(options) { }
         public DbSet<Employees> employees { get; set; }
@@ -25,5 +26,6 @@ namespace HrPayrollFinalProject.DAL
         public DbSet<Salary> Salaries { get; set; }
         public DbSet<Vacation> Vacations { get; set; }
         public DbSet<WorkPlace> WorkPlaces { get; set; }
+        
     }
 }
