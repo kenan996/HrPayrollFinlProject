@@ -20,5 +20,8 @@ namespace HrPayrollFinalProject.Models
         public int EmployeesId { get; set; }
         [Required]
         public Employees Employees { get; set; }
+        [Required]
+        [EnumDataType(typeof(Attendance))]
+        public Attendance Attendance { get; set; }
     }
 }

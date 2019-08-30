@@ -32,11 +32,14 @@ namespace HrPayrollFinalProject.Models
         [Display(Name ="Passport Expire Date")]
         public DateTime PassportExpireDate { get; set; }
         [Required]
+        [EnumDataType(typeof(Education))]
         public Education Education { get; set; }
         [Required]
         [Display(Name ="Family State")]
+        [EnumDataType(typeof(FamilyState))]
         public FamilyState FamilyState { get; set; }
         [Required]
+        
         public bool Gender { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]

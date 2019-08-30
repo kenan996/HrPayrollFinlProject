@@ -54,12 +54,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Education" class="control-label"></label>
-                <select asp-for="Education" class="form-control"></select>
+                <select asp-for="Education" class="form-control" asp-items="Html.GetEnumSelectList<Education>()"></select>
                 <span asp-validation-for="Education" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FamilyState" class="control-label"></label>
-                <select asp-for="FamilyState" class="form-control"></select>
+                <select asp-for="FamilyState" class="form-control" asp-items="Html.GetEnumSelectList<FamilyState>()"></select>
                 <span asp-validation-for="FamilyState" class="text-danger"></span>
             </div>
             <div class="form-group form-check">

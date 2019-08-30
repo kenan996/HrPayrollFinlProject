@@ -1,16 +1,20 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en">
-
 <head>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Pinkman I Basic Table</title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="~/html/favicon.ico">
-    <link rel="icon" href="~/html/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~/favicon.ico">
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
+
+    <!-- Data Table CSS -->
+    <link href="~/html/vendors/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/html/vendors/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Bootstrap table CSS -->
     <link href="~/html/vendors/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
@@ -441,30 +445,30 @@
         <!-- /Vertical Nav End -->
 
         <div class="hk-pg-wrapper">
-          
-                @RenderBody()
+            <div class="container">
+              
+                    @RenderBody()
+            </div>
 
-                <!-- Footer Start-->
-                <div class="hk-footer-wrap container">
-                    <footer class="footer">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                                <p>Pampered by<a href="https://hencework.com/" class="text-dark" target="_blank">Hencework</a> © 2019</p>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                                <p class="d-inline-block">Follow us</p>
-                                <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-facebook"></i></span></a>
-                                <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-twitter"></i></span></a>
-                                <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-google-plus"></i></span></a>
-                            </div>
+            <!-- Footer Start-->
+            <div class="hk-footer-wrap container">
+                <footer class="footer">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <p>Pampered by<a href="https://hencework.com/" class="text-dark" target="_blank">Hencework</a> © 2019</p>
                         </div>
-                    </footer>
-                </div>
+                        <div class="col-md-6 col-sm-12">
+                            <p class="d-inline-block">Follow us</p>
+                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-facebook"></i></span></a>
+                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-twitter"></i></span></a>
+                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-google-plus"></i></span></a>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
-        <!-- /Footer End-->
-   
-
+    </div>
+    <!-- /Footer End-->
     <!-- HK Wrapper -->
     <!-- jQuery -->
     <script src="~/html/vendors/jquery/dist/jquery.min.js"></script>
@@ -475,6 +479,21 @@
 
     <!-- Slimscroll JavaScript -->
     <script src="~/html/dist/js/jquery.slimscroll.js"></script>
+
+    <!-- Data Table JavaScript -->
+    <script src="~/html/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/html/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/html/vendors/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+    <script src="~/html/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/html/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/html/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/html/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="~/html/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/html/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="~/html/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/html/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/html/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/html/dist/js/dataTables-data.js"></script>
 
     <!-- FeatherIcons JavaScript -->
     <script src="~/html/dist/js/feather.min.js"></script>
@@ -496,6 +515,7 @@
 
     <!-- Init JavaScript -->
     <script src="~/html/dist/js/init.js"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 
