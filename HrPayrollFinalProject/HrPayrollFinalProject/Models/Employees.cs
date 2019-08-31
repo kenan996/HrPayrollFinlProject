@@ -10,10 +10,13 @@ namespace HrPayrollFinalProject.Models
     {
         public int Id { get; set; }
         [Required]
+        [MaxLength(50)]
         public string Name { get; set; }
         [Required]
+        [MaxLength(50)]
         public string Surname { get; set; }
         [Required]
+        [MaxLength(50)]
         [Display(Name ="Fathers Name")]
         public string FathersName { get; set; }
         [Required]
@@ -39,12 +42,10 @@ namespace HrPayrollFinalProject.Models
         [EnumDataType(typeof(FamilyState))]
         public FamilyState FamilyState { get; set; }
         [Required]
-        
         public bool Gender { get; set; }
         [Required]
-        [DataType(DataType.PhoneNumber)]
+        [DataType(DataType.ImageUrl)]
         public string Photo { get; set; }
-
         public virtual ICollection<Branch> Branches { get; set; }
         public virtual ICollection<OldWorkPlace> OldWorkPlaces { get; set; }
         public virtual ICollection<WorkPlace> WorkPlaces { get; set; }

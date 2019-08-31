@@ -182,12 +182,15 @@ namespace HrPayrollFinalProject.Migrations
 
                     b.Property<DateTime>("BirthDate");
 
-                    b.Property<int>("Education");
+                    b.Property<string>("Education")
+                        .IsRequired();
 
-                    b.Property<int>("FamilyState");
+                    b.Property<string>("FamilyState")
+                        .IsRequired();
 
                     b.Property<string>("FathersName")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.Property<bool>("Gender");
 
@@ -195,7 +198,8 @@ namespace HrPayrollFinalProject.Migrations
                         .IsRequired();
 
                     b.Property<string>("Name")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.Property<DateTime>("PassportExpireDate");
 
@@ -206,7 +210,8 @@ namespace HrPayrollFinalProject.Migrations
                         .IsRequired();
 
                     b.Property<string>("Surname")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 

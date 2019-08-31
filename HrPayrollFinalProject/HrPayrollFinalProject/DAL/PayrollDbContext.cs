@@ -26,6 +26,23 @@ namespace HrPayrollFinalProject.DAL
         public DbSet<Salary> Salaries { get; set; }
         public DbSet<Vacation> Vacations { get; set; }
         public DbSet<WorkPlace> WorkPlaces { get; set; }
-        
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Employees>()
+                .Property(e => e.FamilyState)
+                .HasConversion(
+                c => c.ToString(),
+                c => (FamilyState)Enum.Parse(typeof(FamilyState), c)
+                );
+
+            builder.Entity<Employees>()
+                .Property(a => a.Education)
+                .HasConversion(v => v.ToString(),
+                v => (Education)Enum.Parse(typeof(Education), v)
+                );
+        }
     }
+
 }

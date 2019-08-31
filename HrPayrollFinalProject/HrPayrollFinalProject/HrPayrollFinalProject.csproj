@@ -23,6 +23,7 @@
 
 
   <ItemGroup>
+    <Folder Include="ViewModel\" />
     <Folder Include="wwwroot\lib\jquery\" />
   </ItemGroup>
 

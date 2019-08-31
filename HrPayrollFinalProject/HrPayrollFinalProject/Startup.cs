@@ -36,7 +36,9 @@ namespace HrPayrollFinalProject
             });
             services.AddIdentity<AppUser, IdentityRole>()
                  .AddEntityFrameworkStores<PayrollDbContext>()
+                 .AddDefaultUI()
                  .AddDefaultTokenProviders();
+                 
                                
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
