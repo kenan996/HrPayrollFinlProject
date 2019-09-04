@@ -42,7 +42,8 @@ namespace HrPayrollFinalProject.Models
         [EnumDataType(typeof(FamilyState))]
         public FamilyState FamilyState { get; set; }
         [Required]
-        public bool Gender { get; set; }
+        [EnumDataType(typeof(Gender))]
+        public Gender Gender { get; set; }
         [Required]
         [DataType(DataType.ImageUrl)]
         public string Photo { get; set; }

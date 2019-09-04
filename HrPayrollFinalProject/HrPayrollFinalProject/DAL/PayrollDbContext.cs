@@ -42,6 +42,12 @@ namespace HrPayrollFinalProject.DAL
                 .HasConversion(v => v.ToString(),
                 v => (Education)Enum.Parse(typeof(Education), v)
                 );
+
+            builder.Entity<Employees>()
+                .Property(g => g.Gender)
+                .HasConversion(c => c.ToString(),
+                c => (Gender)Enum.Parse(typeof(Gender), c)
+                );
         }
     }
 
