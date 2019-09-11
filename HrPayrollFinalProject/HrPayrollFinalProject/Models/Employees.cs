@@ -45,7 +45,7 @@ namespace HrPayrollFinalProject.Models
         [EnumDataType(typeof(Gender))]
         public Gender Gender { get; set; }
         [Required]
-        [DataType(DataType.ImageUrl)]
+        [DataType(DataType.Upload)]
         public string Photo { get; set; }
         public virtual ICollection<Branch> Branches { get; set; }
         public virtual ICollection<OldWorkPlace> OldWorkPlaces { get; set; }

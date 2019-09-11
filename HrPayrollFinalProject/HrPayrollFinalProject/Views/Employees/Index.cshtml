@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HrPayrollFinalProject.Models.Employees>
+﻿@model IEnumerable<Employees>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,9 +7,9 @@
 
 <div class="row">
     <p>
-        <a asp-action="Create" class="btn btn-danger">Create New</a>
+        <a asp-action="create" class="btn btn-warning">Create New</a>
     </p>
-    <table class="table">
+    <table class="table" style="min-width:max-content">
         <thead>
             <tr>
                 <th>
@@ -67,7 +67,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.BirthDate)
                     </td>
-                    <td>
+                    <td>    
                         @Html.DisplayFor(modelItem => item.Adress)
                     </td>
                     <td>
@@ -92,16 +92,14 @@
                         @Html.DisplayFor(modelItem => item.Photo)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-blue">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-warning">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-blue">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
-
-
 
 

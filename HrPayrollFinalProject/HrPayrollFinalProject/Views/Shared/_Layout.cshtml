@@ -197,7 +197,7 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard3.html">Statistics</a>
+                                            <a class="nav-link" href="">Statistics</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -239,9 +239,7 @@
                                             <ul id="signup_drp" class="nav flex-column collapse collapse-level-2">
                                                 <li class="nav-item">
                                                     <ul class="nav flex-column">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="signup.html">Cover</a>
-                                                        </li>
+
                                                         <li class="nav-item">
                                                             <a class="nav-link" href="signup-simple.html">Simple</a>
                                                         </li>
@@ -256,11 +254,9 @@
                                             <ul id="signin_drp" class="nav flex-column collapse collapse-level-2">
                                                 <li class="nav-item">
                                                     <ul class="nav flex-column">
+
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="login.html">Cover</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="login-simple.html">Simple</a>
+                                                            <a class="nav-link" href="#">Simple</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -325,21 +321,10 @@
                         </li>
                     </ul>
                     <hr class="nav-separator">
-                    <div class="nav-header">
-                        <span>User Interface</span>
-                        <span>UI</span>
-                    </div>
-                    <ul class="navbar-nav flex-column">
-                        </a>
-                        <ul id="content_drp" class="nav flex-column collapse collapse-level-1">
-                            <li class="nav-item">
-                                <ul class="nav flex-column">
-                                </ul>
-                            </li>
-                        </ul>
-                        </li>
-                        <li class="nav-item">
 
+                    <ul class="navbar-nav flex-column">
+
+                        <li class="nav-item">
                             <ul id="utilities_drp" class="nav flex-column collapse collapse-level-1">
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
@@ -355,12 +340,9 @@
                             <ul id="forms_drp" class="nav flex-column collapse collapse-level-1">
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
-
-
                                         <li class="nav-item">
                                             <a class="nav-link" href="form-mask.html">Form Mask</a>
                                         </li>
-
                                         <li class="nav-item">
                                             <a class="nav-link" href="form-wizard.html">Form Wizard</a>
                                         </li>
@@ -383,7 +365,7 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="basic-table.html">Basic Table</a>
+                                            <a asp-controller="Employees" asp-action="Index" class="nav-link">Basic Table</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="data-table.html">Data Table</a>
@@ -445,8 +427,8 @@
 
         <div class="hk-pg-wrapper">
             <div class="container" style="overflow-x:auto">
-              
-                    @RenderBody()
+
+                @RenderBody()
             </div>
 
             <!-- Footer Start-->
