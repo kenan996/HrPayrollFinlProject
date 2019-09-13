@@ -13,7 +13,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.0"></DotNetCliToolReference>
     <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="3.2.11" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.0">
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -24,7 +24,6 @@
 
 
   <ItemGroup>
-    <Folder Include="ViewModel\" />
     <Folder Include="wwwroot\lib\jquery\" />
   </ItemGroup>
 

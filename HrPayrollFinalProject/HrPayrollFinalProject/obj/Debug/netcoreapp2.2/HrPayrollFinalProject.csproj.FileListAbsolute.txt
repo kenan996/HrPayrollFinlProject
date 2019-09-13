@@ -34,3 +34,4 @@ C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\AppUser\Index.g.cshtml.cs
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\HrPayrollFinalProject.csprojAssemblyReference.cache
+C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\Account\Register.g.cshtml.cs

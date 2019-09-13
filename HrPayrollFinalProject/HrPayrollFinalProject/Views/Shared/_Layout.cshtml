@@ -5,12 +5,12 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Pinkman I Basic Table</title>
+    <title>Kenan's Prpject </title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="~/favicon.ico">
-    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~/html/favicon.ico">
+    <link rel="icon" href="~/html/favicon.ico" type="~/image/x-icon">
 
     <!-- Data Table CSS -->
     <link href="~/html/vendors/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
@@ -233,19 +233,9 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#signup_drp">
-                                                Sign Up
+                                            <a class="nav-link" asp-controller="Account" asp-action="Register" >
+                                                Register
                                             </a>
-                                            <ul id="signup_drp" class="nav flex-column collapse collapse-level-2">
-                                                <li class="nav-item">
-                                                    <ul class="nav flex-column">
-
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="signup-simple.html">Simple</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#signin_drp">
@@ -496,6 +486,8 @@
 
     <!-- Init JavaScript -->
     <script src="~/html/dist/js/init.js"></script>
+
+
 
     @RenderSection("Scripts", required: false)
 </body>

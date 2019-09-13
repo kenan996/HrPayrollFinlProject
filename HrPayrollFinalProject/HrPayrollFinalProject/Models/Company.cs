@@ -16,5 +16,6 @@ namespace HrPayrollFinalProject.Models
         public Holding Holding { get; set; }
         public virtual ICollection<Salary> Salaries { get; set; }
         public virtual ICollection<Position> Positions { get; set; }
+
     }
 }
