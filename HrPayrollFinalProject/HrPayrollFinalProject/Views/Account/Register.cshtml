@@ -4,7 +4,6 @@
     Layout = null;
 }
 
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -29,24 +28,20 @@
         <div class="loader-pendulums"></div>
     </div>
     <!-- /Preloader -->
-    <!-- HK Wrapper -->
+
+    <!-- HK Wrapper Start -->
     <div class="hk-wrapper">
 
         <!--Navbar Start-->
-
         <nav class="navbar navbar-expand-xl navbar-dark fixed-top hk-navbar">
-            <a class="navbar-brand" href="dashboard1.html">
+            <a class="navbar-brand"  asp-controller="Home" asp-action="Index">
                 <img class="brand-img d-inline-block" src="~/html/dist/img/logo-dark.png" alt="brand" />
             </a>
             <ul class="navbar-nav hk-navbar-content">
                 <li class="nav-item">
                     <a id="navbar_search_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><i class="ion ion-ios-search"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a id="settings_toggle_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><i class="ion ion-ios-settings"></i></a>
-                </li>
+                
                 <li class="nav-item dropdown dropdown-notifications">
-                    <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ion ion-ios-notifications"></i><span class="badge-wrap"><span class="badge badge-primary badge-indicator badge-indicator-sm badge-pill pulse"></span></span></a>
                     <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                         <h6 class="dropdown-header">Notifications <a href="javascript:void(0);" class="">View all</a></h6>
                         <div class="notifications-nicescroll-bar">
@@ -154,27 +149,16 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
                         <a class="dropdown-item" href="profile.html"><i class="dropdown-icon zmdi zmdi-account"></i><span>Profile</span></a>
-                        <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-card"></i><span>My balance</span></a>
-                        <a class="dropdown-item" href="inbox.html"><i class="dropdown-icon zmdi zmdi-email"></i><span>Inbox</span></a>
-                        <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-settings"></i><span>Settings</span></a>
-                        <div class="dropdown-divider"></div>
-                        <div class="sub-dropdown-menu show-on-hover">
-                            <a href="#" class="dropdown-toggle dropdown-item no-caret"><i class="zmdi zmdi-check text-success"></i>Online</a>
-                            <div class="dropdown-menu open-left-side">
-                                <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-check text-success"></i><span>Online</span></a>
-                                <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-circle-o text-warning"></i><span>Busy</span></a>
-                                <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-minus-circle-outline text-danger"></i><span>Offline</span></a>
-                            </div>
-                        </div>
+                       
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-power"></i><span>Log out</span></a>
                     </div>
                 </li>
             </ul>
         </nav>
-
         <!--Navbar End-->
-        <!-- Main Content -->
+
+        <!-- Register Content Start -->
         <div class="hk-pg-wrapper hk-auth-wrapper">
             <header class="d-flex justify-content-end align-items-center"></header>
             <div class="container-fluid">
@@ -225,10 +209,11 @@
                 </div>
             </div>
         </div>
-        <!-- /Main Content -->
+        <!-- Register Content End -->
 
     </div>
-    <!-- /HK Wrapper -->
+    <!-- /HK Wrapper End -->
+
     <!-- jQuery -->
     <script src="~/html/vendors/jquery/dist/jquery.min.js"></script>
 

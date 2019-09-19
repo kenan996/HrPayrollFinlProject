@@ -10,17 +10,15 @@ namespace HrPayrollFinalProject.Models
     {
         public int Id { get; set; }
         [Required]
-        [MaxLength(50)]
         public string Name { get; set; }
         [Required]
-        [MaxLength(50)]
         public string Surname { get; set; }
         [Required]
         [MaxLength(50)]
         [Display(Name ="Fathers Name")]
         public string FathersName { get; set; }
         [Required]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         [Display(Name ="Birth Date")]
         public DateTime BirthDate { get; set; }
         [Required]
@@ -31,7 +29,7 @@ namespace HrPayrollFinalProject.Models
         [Display(Name ="Passport No")]
         public string PassportNo { get; set; }
         [Required]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         [Display(Name ="Passport Expire Date")]
         public DateTime PassportExpireDate { get; set; }
         [Required]

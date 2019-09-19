@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HrPayrollFinalProject.Migrations
 {
     [DbContext(typeof(PayrollDbContext))]
-    [Migration("20190831145554_parseEnumEducation")]
-    partial class parseEnumEducation
+    [Migration("20190918095311_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -194,14 +194,14 @@ namespace HrPayrollFinalProject.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<bool>("Gender");
+                    b.Property<string>("Gender")
+                        .IsRequired();
 
                     b.Property<string>("Influnce")
                         .IsRequired();
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                        .IsRequired();
 
                     b.Property<DateTime>("PassportExpireDate");
 
@@ -212,12 +212,11 @@ namespace HrPayrollFinalProject.Migrations
                         .IsRequired();
 
                     b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                        .IsRequired();
 
                     b.HasKey("Id");
 
-                    b.ToTable("employees");
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("HrPayrollFinalProject.Models.Grade", b =>

@@ -11,7 +11,7 @@ namespace HrPayrollFinalProject.DAL
     public class PayrollDbContext : IdentityDbContext<AppUser>
     {
         public PayrollDbContext(DbContextOptions<PayrollDbContext> options) : base(options) { }
-        public DbSet<Employees> employees { get; set; }
+        public DbSet<Employees> Employees { get; set; }
         public DbSet<Bonus> Bonus { get; set; }
         public DbSet<Branch> Branches { get; set; }
         public DbSet<Company> Companies { get; set; }
@@ -26,6 +26,7 @@ namespace HrPayrollFinalProject.DAL
         public DbSet<Salary> Salaries { get; set; }
         public DbSet<Vacation> Vacations { get; set; }
         public DbSet<WorkPlace> WorkPlaces { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

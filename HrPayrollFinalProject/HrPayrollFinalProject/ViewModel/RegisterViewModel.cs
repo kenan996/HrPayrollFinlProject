@@ -9,10 +9,10 @@ namespace HrPayrollFinalProject.ViewModel
     public class RegisterViewModel
     {
         [Required]
-        [MaxLength(5), MinLength(4)]
+        [MaxLength(20), MinLength(4)]
         public string Name { get; set; }
         [Required]
-        [MaxLength(5), MinLength(4)]
+        [MaxLength(20), MinLength(4)]
         public string Surname { get; set; }
         [Required]
         [EmailAddress,DataType(DataType.EmailAddress)]

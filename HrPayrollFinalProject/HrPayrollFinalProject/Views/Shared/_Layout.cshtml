@@ -2,147 +2,54 @@
 
 <html lang="en">
 <head>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Kenan's Prpject </title>
+    <title>Kenan's Project </title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="~/html/favicon.ico">
     <link rel="icon" href="~/html/favicon.ico" type="~/image/x-icon">
 
-    <!-- Data Table CSS -->
-    <link href="~/html/vendors/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/html/vendors/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <!-- Pagination Link -->
+    <link type="text/css" rel="stylesheet" href="~/html/css/simplePagination.css" />
 
-    <!-- Bootstrap table CSS -->
-    <link href="~/html/vendors/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Tablesaw table CSS -->
+    <link href="~/html/vendors/tablesaw/dist/tablesaw.css" rel="stylesheet" type="text/css" />
+
 
     <!-- Toggles CSS -->
     <link href="~/html/vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
     <link href="~/html/vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
 
+
+    <!-- Bootstrap table CSS -->
+    <link href="~/html/vendors/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+
+
     <!-- Custom CSS -->
     <link href="~/html/dist/css/style.css" rel="stylesheet" type="text/css">
-
 </head>
-
 <body>
-    <!-- Preloader -->
+    <!-- Preloader Start -->
     <div class="preloader-it">
         <div class="loader-pendulums"></div>
     </div>
-    <!-- /Preloader -->
-    <!-- HK Wrapper -->
+    <!-- Preloader End -->
+    <!-- HK Wrapper Start -->
 
     <div class="hk-wrapper hk-vertical-nav">
 
         <!-- Top Navbar Start -->
         <nav class="navbar navbar-expand-xl navbar-dark fixed-top hk-navbar">
             <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><i class="ion ion-ios-menu"></i></a>
-            <a class="navbar-brand" href="dashboard1.html">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                 <img class="brand-img d-inline-block" src="~/html/dist/img/logo-dark.png" alt="brand" />
             </a>
             <ul class="navbar-nav hk-navbar-content">
                 <li class="nav-item">
                     <a id="navbar_search_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><i class="ion ion-ios-search"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a id="settings_toggle_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><i class="ion ion-ios-settings"></i></a>
-                </li>
-                <li class="nav-item dropdown dropdown-notifications">
-                    <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ion ion-ios-notifications"></i><span class="badge-wrap"><span class="badge badge-primary badge-indicator badge-indicator-sm badge-pill pulse"></span></span></a>
-                    <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                        <h6 class="dropdown-header">Notifications <a href="javascript:void(0);" class="">View all</a></h6>
-                        <div class="notifications-nicescroll-bar">
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <div class="media">
-                                    <div class="media-img-wrap">
-                                        <div class="avatar avatar-sm">
-                                            <img src="~/html/dist/img/avatar1.jpg" alt="user" class="avatar-img rounded-circle">
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <div>
-                                            <div class="notifications-text"><span class="text-dark text-capitalize">Evie Ono</span> accepted your invitation to join the team</div>
-                                            <div class="notifications-time">12m</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <div class="media">
-                                    <div class="media-img-wrap">
-                                        <div class="avatar avatar-sm">
-                                            <img src="~/html/dist/img/avatar2.jpg" alt="user" class="avatar-img rounded-circle">
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <div>
-                                            <div class="notifications-text">New message received from <span class="text-dark text-capitalize">Misuko Heid</span></div>
-                                            <div class="notifications-time">1h</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <div class="media">
-                                    <div class="media-img-wrap">
-                                        <div class="avatar avatar-sm">
-                                            <span class="avatar-text avatar-text-primary rounded-circle">
-                                                <span class="initial-wrap"><span><i class="zmdi zmdi-account font-18"></i></span></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <div>
-                                            <div class="notifications-text">You have a follow up with<span class="text-dark text-capitalize"> Pinkman head</span> on <span class="text-dark text-capitalize">friday, dec 19</span> at <span class="text-dark">10.00 am</span></div>
-                                            <div class="notifications-time">2d</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <div class="media">
-                                    <div class="media-img-wrap">
-                                        <div class="avatar avatar-sm">
-                                            <span class="avatar-text avatar-text-success rounded-circle">
-                                                <span class="initial-wrap"><span>A</span></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <div>
-                                            <div class="notifications-text">Application of <span class="text-dark text-capitalize">Sarah Williams</span> is waiting for your approval</div>
-                                            <div class="notifications-time">1w</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <div class="media">
-                                    <div class="media-img-wrap">
-                                        <div class="avatar avatar-sm">
-                                            <span class="avatar-text avatar-text-warning rounded-circle">
-                                                <span class="initial-wrap"><span><i class="zmdi zmdi-notifications font-18"></i></span></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <div>
-                                            <div class="notifications-text">Last 2 days left for the project</div>
-                                            <div class="notifications-time">15d</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
                 </li>
                 <li class="nav-item dropdown dropdown-authentication">
                     <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -154,24 +61,13 @@
                                 <span class="badge badge-success badge-indicator"></span>
                             </div>
                             <div class="media-body">
-                                <span>Madelyn Shane<i class="zmdi zmdi-chevron-down"></i></span>
+                                <span>Kenan<i class="zmdi zmdi-chevron-down"></i></span>
                             </div>
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
                         <a class="dropdown-item" href="profile.html"><i class="dropdown-icon zmdi zmdi-account"></i><span>Profile</span></a>
-                        <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-card"></i><span>My balance</span></a>
-                        <a class="dropdown-item" href="inbox.html"><i class="dropdown-icon zmdi zmdi-email"></i><span>Inbox</span></a>
-                        <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-settings"></i><span>Settings</span></a>
-                        <div class="dropdown-divider"></div>
-                        <div class="sub-dropdown-menu show-on-hover">
-                            <a href="#" class="dropdown-toggle dropdown-item no-caret"><i class="zmdi zmdi-check text-success"></i>Online</a>
-                            <div class="dropdown-menu open-left-side">
-                                <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-check text-success"></i><span>Online</span></a>
-                                <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-circle-o text-warning"></i><span>Busy</span></a>
-                                <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-minus-circle-outline text-danger"></i><span>Offline</span></a>
-                            </div>
-                        </div>
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-power"></i><span>Log out</span></a>
                     </div>
@@ -185,7 +81,7 @@
                 <a id="navbar_search_close" class="navbar-search-close" href="#"><i class="ion ion-ios-close"></i></a>
             </div>
         </form>
-        <!-- /Top Navbar End -->
+        <!-- Top Navbar End -->
         <!-- Vertical Nav Start -->
         <nav class="hk-nav hk-nav-light">
             <a href="javascript:void(0);" id="hk_nav_close" class="hk-nav-close"><span class="feather-icon"><i data-feather="x"></i></span></a>
@@ -207,16 +103,13 @@
                             <a class="nav-link link-with-badge" href="javascript:void(0);" data-toggle="collapse" data-target="#app_drp">
                                 <i class="ion ion-ios-apps"></i>
                                 <span class="nav-link-text">Application</span>
-                                <span class="badge badge-primary badge-pill">4</span>
                             </a>
                             <ul id="app_drp" class="nav flex-column collapse collapse-level-1">
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
-
                                         <li class="nav-item">
                                             <a class="nav-link" href="calendar.html">Calendar</a>
                                         </li>
-
                                         <li class="nav-item">
                                             <a class="nav-link" href="file-manager.html">File Manager</a>
                                         </li>
@@ -233,24 +126,14 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" asp-controller="Account" asp-action="Register" >
+                                            <a class="nav-link" asp-controller="Account" asp-action="Register">
                                                 Register
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#signin_drp">
+                                            <a class="nav-link" href="javascript:void(0);" data-target="#signin_drp">
                                                 Login
                                             </a>
-                                            <ul id="signin_drp" class="nav flex-column collapse collapse-level-2">
-                                                <li class="nav-item">
-                                                    <ul class="nav flex-column">
-
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Simple</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#recover_drp">
@@ -311,9 +194,7 @@
                         </li>
                     </ul>
                     <hr class="nav-separator">
-
                     <ul class="navbar-nav flex-column">
-
                         <li class="nav-item">
                             <ul id="utilities_drp" class="nav flex-column collapse collapse-level-1">
                                 <li class="nav-item">
@@ -349,16 +230,16 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#tables_drp">
                                 <i class="ion ion-ios-today"></i>
-                                <span class="nav-link-text">Tables</span>
+                                <span class="nav-link-text">Employees</span>
                             </a>
                             <ul id="tables_drp" class="nav flex-column collapse collapse-level-1">
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item active">
-                                            <a asp-controller="Employees" asp-action="Index" class="nav-link">Basic Table</a>
+                                            <a asp-controller="Employees" asp-action="Index" class="nav-link">Employees Table</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="data-table.html">Data Table</a>
+                                            <a class="nav-link" asp-controller="Employees" asp-action="Create">Create</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="responsive-table.html">Responsive Table</a>
@@ -413,7 +294,7 @@
             </div>
         </nav>
         <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
-        <!-- /Vertical Nav End -->
+        <!-- Vertical Nav End -->
 
         <div class="hk-pg-wrapper">
             <div class="container" style="overflow-x:auto">
@@ -439,10 +320,14 @@
             </div>
         </div>
     </div>
-    <!-- /Footer End-->
-    <!-- HK Wrapper -->
+    <!-- Footer End-->
+    <!-- HK Wrapper End -->
     <!-- jQuery -->
     <script src="~/html/vendors/jquery/dist/jquery.min.js"></script>
+
+    <!-- Pagination Script -->
+    <script type="text/javascript" src="~/lib/jquery/jquery.js"></script>
+    <script type="text/javascript" src="~/html/js/jquery.simplePagination.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="~/html/vendors/popper.js/dist/umd/popper.min.js"></script>
@@ -451,34 +336,15 @@
     <!-- Slimscroll JavaScript -->
     <script src="~/html/dist/js/jquery.slimscroll.js"></script>
 
-    <!-- Data Table JavaScript -->
-    <script src="~/html/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="~/html/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/html/vendors/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
-    <script src="~/html/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="~/html/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-    <script src="~/html/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="~/html/vendors/jszip/dist/jszip.min.js"></script>
-    <script src="~/html/vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="~/html/vendors/pdfmake/build/vfs_fonts.js"></script>
-    <script src="~/html/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="~/html/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="~/html/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="~/html/dist/js/dataTables-data.js"></script>
-
     <!-- FeatherIcons JavaScript -->
     <script src="~/html/dist/js/feather.min.js"></script>
 
     <!-- Fancy Dropdown JS -->
     <script src="~/html/dist/js/dropdown-bootstrap-extended.js"></script>
 
-    <!-- Bootstrap-table JavaScript -->
-    <script src="~/html/vendors/bootstrap-table/dist/bootstrap-table.min.js"></script>
-    <script src="~/html/dist/js/bootstrap-table-data.js"></script>
-
-    <!-- Peity JavaScript -->
-    <script src="~/html/vendors/peity/jquery.peity.min.js"></script>
-    <script src="~/html/dist/js/peity-data.js"></script>
+    <!-- Tablesaw JavaScript -->
+    <script src="~/html/vendors/tablesaw/dist/tablesaw.jquery.js"></script>
+    <script src="~/html/dist/js/tablesaw-data.js"></script>
 
     <!-- Toggles JavaScript -->
     <script src="~/html/vendors/jquery-toggles/toggles.min.js"></script>
@@ -487,9 +353,21 @@
     <!-- Init JavaScript -->
     <script src="~/html/dist/js/init.js"></script>
 
+    <!-- Peity JavaScript -->
+    <script src="~/html/vendors/peity/jquery.peity.min.js"></script>
+    <script src="~/html/dist/js/peity-data.js"></script>
 
+    <script>
+
+        $(function () {
+            $("#compact").pagination({
+                items: 100,
+                itemsOnPage: 10,
+                cssStyle: 'light-theme'
+            });
+        });
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>
-
 </html>

@@ -38,7 +38,14 @@ namespace HrPayrollFinalProject
                  .AddEntityFrameworkStores<PayrollDbContext>()
                  .AddDefaultUI()
                  .AddDefaultTokenProviders();
-                 
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequiredLength = 8;
+                options.Password.RequiredUniqueChars = 3;
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequireNonAlphanumeric = false;
+            });
                                
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -67,7 +74,7 @@ namespace HrPayrollFinalProject
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Account}/{action=Register}/{id?}");
             });
         }
     }

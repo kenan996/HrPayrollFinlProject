@@ -5,101 +5,195 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row">
-    <p>
-        <a asp-action="create" class="btn btn-warning">Create New</a>
-    </p>
-    <table class="table" style="min-width:max-content">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Surname)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FathersName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BirthDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Adress)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Influnce)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PassportNo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PassportExpireDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Education)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FamilyState)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Gender)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Photo)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+@*<div class="row">
+        <p>
+            <a asp-action="create" class="btn btn-warning">Create New</a>
+        </p>
+        <table class="table" style="min-width:max-content">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Surname)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FathersName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BirthDate)
-                    </td>
-                    <td>    
-                        @Html.DisplayFor(modelItem => item.Adress)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Influnce)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PassportNo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PassportExpireDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Education)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FamilyState)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Gender)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Photo)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-blue">Edit</a>
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">Details</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Surname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FathersName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BirthDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Adress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Influnce)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PassportNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PassportExpireDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Education)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FamilyState)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Photo)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FathersName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BirthDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Adress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Influnce)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PassportNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PassportExpireDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Education)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FamilyState)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Photo)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-blue">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>*@
+
+
+
+
+
+<!-- Main Content Start -->
+<!-- Breadcrumb Start -->
+<nav class="hk-breadcrumb" aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-light bg-transparent">
+        <li class="breadcrumb-item"><a href="#">Tables</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Responsive Table</li>
+    </ol>
+</nav>
+<!-- Breadcrumb End -->
+<!-- Container Start -->
+<div class="container">
+
+    <!-- Title Start -->
+    <div class="hk-pg-header">
+        <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="smartphone"></i></span></span>Responsive Table</h4>
+    </div>
+    <!-- Title End -->
+
+    <div class="row">
+        <div class="col-xl-12">
+            <section class="hk-sec-wrapper">
+                <p>
+                    <a asp-action="create" class="btn btn-warning">Create New</a>
+                </p>
+                <h5 class="hk-sec-title">Mode Switch Table</h5>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="table-wrap">
+                            <table class="table tablesaw table-bordered table-hover mb-0" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap>
+                                <thead>
+                                    <tr>
+                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Name</th>
+                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Surname</th>
+                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Fathers Name</th>
+                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">Birth Date</th>
+                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1"><abbr title="Rotten Tomato Rating">Adress</abbr></th>
+                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Influence</th>
+                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Passport No</th>
+                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Passport Expire Date</th>
+                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">Education</th>
+                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1"><abbr title="Rotten Tomato Rating">Family State</abbr></th>
+                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Gender</th>
+                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">Photo</th>
+                                        <th scope="col">Edit</th>
+                                        <th scope="col">Delete</th>
+                                        <th scope="col">Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="title"><a href="javascript:void(0)">@item.Name</a></td>
+                                            <td class="title"><a href="javascript:void(0)">@item.Surname</a></td>
+                                            <td>@item.FathersName</td>
+                                            <td>@item.BirthDate</td>
+                                            <td>@item.Adress</td>
+                                            <td>@item.Influnce</td>
+                                            <td>@item.PassportNo</td>
+                                            <td>@item.PassportExpireDate</td>
+                                            <td>@item.Education</td>
+                                            <td>@item.FamilyState</td>
+                                            <td>@item.Gender</td>
+                                            <td>@item.Photo</td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-blue">Edit</a>
+                                            </td>
+                                            <td>
+                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                            </td>
+                                            <td>
+                                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">Details</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <div id="compact" class="pt-3">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
 </div>
 
 
+<!-- Container End -->
+<!-- Main Content End -->

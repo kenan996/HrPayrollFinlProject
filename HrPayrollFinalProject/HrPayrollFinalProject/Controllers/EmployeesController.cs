@@ -22,7 +22,7 @@ namespace HrPayrollFinalProject.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            return View(await _context.employees.ToListAsync());
+            return View(await _context.Employees.ToListAsync());
         }
 
         // GET: Employees/Details/5
@@ -33,7 +33,7 @@ namespace HrPayrollFinalProject.Controllers
                 return NotFound();
             }
 
-            var employees = await _context.employees
+            var employees = await _context.Employees
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (employees == null)
             {
@@ -73,7 +73,7 @@ namespace HrPayrollFinalProject.Controllers
                 return NotFound();
             }
 
-            var employees = await _context.employees.FindAsync(id);
+            var employees = await _context.Employees.FindAsync(id);
             if (employees == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace HrPayrollFinalProject.Controllers
                 return NotFound();
             }
 
-            var employees = await _context.employees
+            var employees = await _context.Employees
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (employees == null)
             {
@@ -139,15 +139,15 @@ namespace HrPayrollFinalProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employees = await _context.employees.FindAsync(id);
-            _context.employees.Remove(employees);
+            var employees = await _context.Employees.FindAsync(id);
+            _context.Employees.Remove(employees);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool EmployeesExists(int id)
         {
-            return _context.employees.Any(e => e.Id == id);
+            return _context.Employees.Any(e => e.Id == id);
         }
     }
 }
