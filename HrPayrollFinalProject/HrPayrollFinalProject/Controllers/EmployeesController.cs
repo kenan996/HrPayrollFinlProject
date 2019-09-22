@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HrPayrollFinalProject.DAL;
 using HrPayrollFinalProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HrPayrollFinalProject.Controllers
 {
+    
     public class EmployeesController : Controller
     {
         private readonly PayrollDbContext _context;

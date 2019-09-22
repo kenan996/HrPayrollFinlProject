@@ -56,5 +56,10 @@ namespace HrPayrollFinalProject.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
     }
 }
