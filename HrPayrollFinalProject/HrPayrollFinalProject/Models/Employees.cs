@@ -10,11 +10,13 @@ namespace HrPayrollFinalProject.Models
     {
         public int Id { get; set; }
         [Required]
+        [MaxLength(20),MinLength(3)]
         public string Name { get; set; }
         [Required]
+        [MaxLength(25),MinLength(3)]
         public string Surname { get; set; }
         [Required]
-        [MaxLength(50)]
+        [MaxLength(15),MinLength(3)]
         [Display(Name ="Fathers Name")]
         public string FathersName { get; set; }
         [Required]

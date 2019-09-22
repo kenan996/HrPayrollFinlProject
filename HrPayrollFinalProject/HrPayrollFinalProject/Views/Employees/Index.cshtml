@@ -103,97 +103,174 @@
     </div>*@
 
 
-
-
-
 <!-- Main Content Start -->
 <!-- Breadcrumb Start -->
-<nav class="hk-breadcrumb" aria-label="breadcrumb">
-    <ol class="breadcrumb breadcrumb-light bg-transparent">
-        <li class="breadcrumb-item"><a href="#">Tables</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Responsive Table</li>
-    </ol>
-</nav>
+@*<nav class="hk-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-light bg-transparent">
+            <li class="breadcrumb-item"><a href="#">Tables</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Responsive Table</li>
+        </ol>
+    </nav>*@
 <!-- Breadcrumb End -->
-<!-- Container Start -->
+
+
+
+
 <div class="container">
 
     <!-- Title Start -->
     <div class="hk-pg-header">
-        <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="smartphone"></i></span></span>Responsive Table</h4>
+        <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="database"></i></span></span>Data Tables</h4>
     </div>
     <!-- Title End -->
 
+    <!-- Row Start -->
     <div class="row">
         <div class="col-xl-12">
             <section class="hk-sec-wrapper">
-                <p>
-                    <a asp-action="create" class="btn btn-warning">Create New</a>
-                </p>
-                <h5 class="hk-sec-title">Mode Switch Table</h5>
+                <h5 class="hk-sec-title">Data Table</h5>
                 <div class="row">
                     <div class="col-sm">
                         <div class="table-wrap">
-                            <table class="table tablesaw table-bordered table-hover mb-0" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap>
+                            <table id="datable_1" class="table table-hover w-100 display pb-30">
                                 <thead>
                                     <tr>
-                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Name</th>
-                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Surname</th>
-                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Fathers Name</th>
-                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">Birth Date</th>
-                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1"><abbr title="Rotten Tomato Rating">Adress</abbr></th>
-                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Influence</th>
-                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Passport No</th>
-                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Passport Expire Date</th>
-                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">Education</th>
-                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1"><abbr title="Rotten Tomato Rating">Family State</abbr></th>
-                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Gender</th>
-                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">Photo</th>
-                                        <th scope="col">Edit</th>
-                                        <th scope="col">Delete</th>
-                                        <th scope="col">Details</th>
+                                        <th>Name</th>
+                                        <th>Surname</th>
+                                        <th>FathersName</th>
+                                        <th>BirthDate</th>
+                                        <th>Adress</th>
+                                        <th>Influnce</th>
+                                        <th>Passport No</th>
+                                        <th>Passport Expire Date</th>
+                                        <th>Education</th>
+                                        <th>Family State</th>
+                                        <th>Gender</th>
+                                        <th>Photo</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                        <th>Details</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                        <tr>
-                                            <td class="title"><a href="javascript:void(0)">@item.Name</a></td>
-                                            <td class="title"><a href="javascript:void(0)">@item.Surname</a></td>
-                                            <td>@item.FathersName</td>
-                                            <td>@item.BirthDate</td>
-                                            <td>@item.Adress</td>
-                                            <td>@item.Influnce</td>
-                                            <td>@item.PassportNo</td>
-                                            <td>@item.PassportExpireDate</td>
-                                            <td>@item.Education</td>
-                                            <td>@item.FamilyState</td>
-                                            <td>@item.Gender</td>
-                                            <td>@item.Photo</td>
-                                            <td>
-                                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-blue">Edit</a>
-                                            </td>
-                                            <td>
-                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                                            </td>
-                                            <td>
-                                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">Details</a>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>@item.Name</td>
+                                        <td>@item.Surname</td>
+                                        <td>@item.FathersName</td>
+                                        <td>@item.BirthDate</td>
+                                        <td>@item.Adress</td>
+                                        <td>@item.Influnce</td>
+                                        <td>@item.PassportNo</td>
+                                        <td>@item.PassportExpireDate</td>
+                                        <td>@item.Education</td>
+                                        <td>@item.FamilyState</td>
+                                        <td>@item.Gender</td>
+                                        <td>@item.Photo</td>
+
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-blue">Edit</a>
+                                        </td>
+                                        <td>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                        </td>
+                                        <td>
+                                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">Details</a>
+                                        </td>
+
+                                    </tr>
                                     }
-                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Surname</th>
+                                        <th>FathersName</th>
+                                        <th>BirthDate</th>
+                                        <th>Adress</th>
+                                        <th>Influnce</th>
+                                        <th>Passport No</th>
+                                        <th>Passport Expire Date</th>
+                                        <th>Education</th>
+                                        <th>Family State</th>
+                                        <th>Gender</th>
+                                        <th>Photo</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </tfoot>
                             </table>
-                            <div id="compact" class="pt-3">
-                            </div>
                         </div>
                     </div>
-
+                </div>
+            </section>
+            <section class="hk-sec-wrapper">
+                <h5 class="hk-sec-title">Export Table</h5>
+                <p class="mb-40">Use buttons: <code>['copy', 'csv', 'excel', 'pdf', 'print']</code> to add export table options.</p>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="table-wrap">
+                            <table id="datable_3" class="table table-hover w-100 display">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        <th>Age</th>
+                                        <th>Start date</th>
+                                        <th>Salary</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>Edinburgh</td>
+                                        <td>61</td>
+                                        <td>2011/04/25</td>
+                                        <td>$320,800</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Adwez Nash</td>
+                                        <td>Software Engineer</td>
+                                        <td>India</td>
+                                        <td>38</td>
+                                        <td>2014/05/03</td>
+                                        <td>$763,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Garrett Winters</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>63</td>
+                                        <td>2011/07/25</td>
+                                        <td>$170,750</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ashton Cox</td>
+                                        <td>Junior Technical Author</td>
+                                        <td>San Francisco</td>
+                                        <td>66</td>
+                                        <td>2009/01/12</td>
+                                        <td>$86,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cedric Kelly</td>
+                                        <td>Senior Javascript Developer</td>
+                                        <td>Edinburgh</td>
+                                        <td>22</td>
+                                        <td>2012/03/29</td>
+                                        <td>$433,060</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
     </div>
+    <!-- Row End -->
+
 </div>
-
-
-<!-- Container End -->
-<!-- Main Content End -->

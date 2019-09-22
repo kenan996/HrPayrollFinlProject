@@ -37,7 +37,7 @@ namespace HrPayrollFinalProject.DAL
                 c => c.ToString(),
                 c => (FamilyState)Enum.Parse(typeof(FamilyState), c)
                 );
-
+                
             builder.Entity<Employees>()
                 .Property(a => a.Education)
                 .HasConversion(v => v.ToString(),

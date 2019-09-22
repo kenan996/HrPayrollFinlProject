@@ -13,11 +13,11 @@ namespace HrPayrollFinalProject.Models
         [Display(Name ="Work Place Name")]
         public string WorkPLaceName { get; set; }
         [Required]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         [Display(Name ="Fire Date")]
         public DateTime FireDate { get; set; }
         [Required]  
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         [Display(Name = "Hire Date")]
         public DateTime HireDate { get; set; }
         [Required]

@@ -14,7 +14,7 @@ namespace HrPayrollFinalProject.Models
         [Required]
         public Employees Employees { get; set; }
         [Required]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         [Required]
         public int Bonus { get; set; }
@@ -23,7 +23,7 @@ namespace HrPayrollFinalProject.Models
         [Required]
         public int Salary { get; set; }
         [Required]
-        [Display(Name ="To Salary")]
+        [Display(Name ="Total Salary")]
         public int TotalSalary { get; set; }
     }
 }

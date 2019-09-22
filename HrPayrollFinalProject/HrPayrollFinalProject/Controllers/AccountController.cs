@@ -15,7 +15,8 @@ namespace HrPayrollFinalProject.Controllers
         private readonly PayrollDbContext dbContext;
         private readonly UserManager<AppUser> userManager;
         private readonly SignInManager<AppUser> signInManager;
-        public AccountController(
+        public AccountController
+            (
             PayrollDbContext _dbContext,
             UserManager<AppUser> _userManager,
             SignInManager<AppUser> _signInManager

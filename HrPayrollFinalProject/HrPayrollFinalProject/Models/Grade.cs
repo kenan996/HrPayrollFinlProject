@@ -14,7 +14,7 @@ namespace HrPayrollFinalProject.Models
         [Required]
         public Branch Branch { get; set; }
         [Required]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         [Required]
         [Display(Name ="From Amount")]

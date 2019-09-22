@@ -11,9 +11,10 @@
     <link rel="shortcut icon" href="~/html/favicon.ico">
     <link rel="icon" href="~/html/favicon.ico" type="~/image/x-icon">
 
-    <!-- Pagination Link -->
-    <link type="text/css" rel="stylesheet" href="~/html/css/simplePagination.css" />
 
+    <!-- Data Table CSS -->
+    <link href="~/html/vendors/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/html/vendors/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Tablesaw table CSS -->
     <link href="~/html/vendors/tablesaw/dist/tablesaw.css" rel="stylesheet" type="text/css" />
@@ -322,12 +323,25 @@
     </div>
     <!-- Footer End-->
     <!-- HK Wrapper End -->
+
     <!-- jQuery -->
     <script src="~/html/vendors/jquery/dist/jquery.min.js"></script>
 
-    <!-- Pagination Script -->
-    <script type="text/javascript" src="~/lib/jquery/jquery.js"></script>
-    <script type="text/javascript" src="~/html/js/jquery.simplePagination.js"></script>
+    <!-- Data Table JavaScript -->
+    <script src="~/html/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/html/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/html/vendors/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+    <script src="~/html/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/html/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/html/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/html/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="~/html/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/html/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="~/html/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/html/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/html/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/html/dist/js/dataTables-data.js"></script>
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="~/html/vendors/popper.js/dist/umd/popper.min.js"></script>
@@ -356,17 +370,6 @@
     <!-- Peity JavaScript -->
     <script src="~/html/vendors/peity/jquery.peity.min.js"></script>
     <script src="~/html/dist/js/peity-data.js"></script>
-
-    <script>
-
-        $(function () {
-            $("#compact").pagination({
-                items: 100,
-                itemsOnPage: 10,
-                cssStyle: 'light-theme'
-            });
-        });
-    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

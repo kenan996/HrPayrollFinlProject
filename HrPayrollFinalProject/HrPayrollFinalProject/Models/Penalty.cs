@@ -12,6 +12,7 @@ namespace HrPayrollFinalProject.Models
         [Required]
         public int Amount { get; set; }
         [Required]
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         [Required]
         public int EmployeesId { get; set; }
