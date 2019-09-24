@@ -54,12 +54,43 @@ namespace HrPayrollFinalProject.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Register", "Account");
+        }
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel loginViewModel)
+        {
+            if (!ModelState.IsValid) return View(loginViewModel);
+
+            AppUser appUser = await userManager.FindByNameAsync(loginViewModel.Username);
+
+            if (appUser == null)
+            {
+                ModelState.AddModelError("", "Username or password isvalid");
+                return View(loginViewModel);
+            }
+            Microsoft.AspNetCore.Identity.SignInResult signInResult =
+                await signInManager.PasswordSignInAsync(appUser, loginViewModel.Password, true, false);
+
+            if (!signInResult.Succeeded)
+            {
+                ModelState.AddModelError("", "Username or password isvalid");
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

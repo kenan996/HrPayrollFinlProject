@@ -1,15 +1,93 @@
-﻿
+﻿@model LoginViewModel
 @{
     Layout = null;
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Pinkman I Login</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/html/favicon.ico">
+    <link rel="icon" href="~/html/favicon.ico" type="~/image/x-icon">
+
+    <!-- Toggles CSS -->
+    <link href="~/html/vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
+    <link href="~/html/vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
+    
+    <!-- Custom CSS -->
+    <link href="~/html/dist/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader-it">
+        <div class="loader-pendulums"></div>
+    </div>
+    <!-- /Preloader -->
+    <!-- HK Wrapper -->
+    <div class="hk-wrapper">
+
+        <!-- Main Content -->
+        <div class="hk-pg-wrapper hk-auth-wrapper">
+            <header class="d-flex justify-content-end align-items-center">
+                <div class="btn-group btn-group-sm">
+                    <a href="#" class="btn btn-outline-secondary">Help</a>
+                    <a href="#" class="btn btn-outline-secondary">About Us</a>
+                </div>
+            </header>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 pa-0">
+                        <div class="auth-form-wrap pt-xl-0 pt-70">
+                            <div class="auth-form w-xl-30 w-lg-55 w-sm-75 w-100">
+                                <p class="text-center mb-30">Sign in to your account</p>
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <form asp-action="Login">
+
+                                    <div class="form-group">
+                                        <label asp-for="Username"></label>
+                                        <input class="form-control" asp-for="Username" />
+                                        <span class="text-danger" asp-validation-for="Username"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Password"></label>
+                                        <input class="form-control" asp-for="Password">
+                                        <span class="text-danger" asp-validation-for="Password"></span>
+                                    </div>
+                                    <button class="btn btn-pink btn-block" asp-action="Login">Login</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /HK Wrapper -->
+    <!-- JavaScript -->
+
+    <!-- jQuery -->
+    <script src="~/html/vendors/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/html/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/html/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Slimscroll JavaScript -->
+    <script src="~/html/dist/js/jquery.slimscroll.js"></script>
+
+    <!-- Fancy Dropdown JS -->
+    <script src="~/html/dist/js/dropdown-bootstrap-extended.js"></script>
+
+    <!-- FeatherIcons JavaScript -->
+    <script src="~/html/dist/js/feather.min.js"></script>
+
+    <!-- Init JavaScript -->
+    <script src="~/html/dist/js/init.js"></script>
 </body>
 </html>

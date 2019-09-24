@@ -168,7 +168,6 @@
                                         <td>@item.FamilyState</td>
                                         <td>@item.Gender</td>
                                         <td>@item.Photo</td>
-
                                         <td>
                                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-blue">Edit</a>
                                         </td>
@@ -178,15 +177,14 @@
                                         <td>
                                             <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">Details</a>
                                         </td>
-
                                     </tr>
                                     }
                                 <tfoot>
                                     <tr>
                                         <th>Name</th>
                                         <th>Surname</th>
-                                        <th>FathersName</th>
-                                        <th>BirthDate</th>
+                                        <th>Fathers Name</th>
+                                        <th>Birth Date</th>
                                         <th>Adress</th>
                                         <th>Influnce</th>
                                         <th>Passport No</th>
@@ -205,7 +203,7 @@
                     </div>
                 </div>
             </section>
-            <section class="hk-sec-wrapper">
+            @*<section class="hk-sec-wrapper">
                 <h5 class="hk-sec-title">Export Table</h5>
                 <p class="mb-40">Use buttons: <code>['copy', 'csv', 'excel', 'pdf', 'print']</code> to add export table options.</p>
                 <div class="row">
@@ -268,7 +266,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section>*@
         </div>
     </div>
     <!-- Row End -->
