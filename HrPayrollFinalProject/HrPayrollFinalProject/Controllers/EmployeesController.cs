@@ -11,16 +11,16 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace HrPayrollFinalProject.Controllers
 {
-    
+    [Authorize]
     public class EmployeesController : Controller
     {
         private readonly PayrollDbContext _context;
-
+        
         public EmployeesController(PayrollDbContext context)
         {
             _context = context;
         }
-
+       
         // GET: Employees
         public async Task<IActionResult> Index()
         {

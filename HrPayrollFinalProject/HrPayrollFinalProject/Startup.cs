@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace HrPayrollFinalProject
 {
@@ -36,7 +37,6 @@ namespace HrPayrollFinalProject
             });
             services.AddIdentity<AppUser, IdentityRole>()
                  .AddEntityFrameworkStores<PayrollDbContext>()
-                 .AddDefaultUI()
                  .AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
@@ -45,6 +45,10 @@ namespace HrPayrollFinalProject
                 options.Password.RequiredUniqueChars = 3;
                 options.User.RequireUniqueEmail = true;
                 options.Password.RequireNonAlphanumeric = false;
+
+                
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
             });
                                
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -75,7 +79,7 @@ namespace HrPayrollFinalProject
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Account}/{action=Register}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

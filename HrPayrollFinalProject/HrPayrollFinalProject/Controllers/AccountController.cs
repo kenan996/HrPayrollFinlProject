@@ -7,6 +7,7 @@ using HrPayrollFinalProject.ViewModel;
 using HrPayrollFinalProject.DAL;
 using Microsoft.AspNetCore.Identity;
 using HrPayrollFinalProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HrPayrollFinalProject.Controllers
 {
@@ -15,6 +16,7 @@ namespace HrPayrollFinalProject.Controllers
         private readonly PayrollDbContext dbContext;
         private readonly UserManager<AppUser> userManager;
         private readonly SignInManager<AppUser> signInManager;
+
         public AccountController
             (
             PayrollDbContext _dbContext,
@@ -27,7 +29,7 @@ namespace HrPayrollFinalProject.Controllers
             dbContext = _dbContext;
             signInManager = _signInManager;
         }
-
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
@@ -54,13 +56,13 @@ namespace HrPayrollFinalProject.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
             }
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Login","Account");
         }
 
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-            return RedirectToAction("Register", "Account");
+            return RedirectToAction("Login","Account");
         }
         [HttpGet]
         public IActionResult Login()
@@ -82,15 +84,13 @@ namespace HrPayrollFinalProject.Controllers
                 return View(loginViewModel);
             }
             Microsoft.AspNetCore.Identity.SignInResult signInResult =
-                await signInManager.PasswordSignInAsync(appUser, loginViewModel.Password, true, false);
+                await signInManager.PasswordSignInAsync(appUser, loginViewModel.Password, true, true);
 
             if (!signInResult.Succeeded)
             {
-                ModelState.AddModelError("", "Username or password isvalid");
+                ModelState.AddModelError("","Username or password isvalid");
             }
-
             return RedirectToAction("Index", "Home");
         }
-    
     }
 }
