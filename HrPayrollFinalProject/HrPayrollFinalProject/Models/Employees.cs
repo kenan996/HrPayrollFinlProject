@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -47,6 +49,9 @@ namespace HrPayrollFinalProject.Models
         [Required]
         [DataType(DataType.Upload)]
         public string Photo { get; set; }
+        [NotMapped]
+        [Required]
+        public IFormFile ImageUrl { get; set; }
         public virtual ICollection<Branch> Branches { get; set; }
         public virtual ICollection<OldWorkPlace> OldWorkPlaces { get; set; }
         public virtual ICollection<WorkPlace> WorkPlaces { get; set; }

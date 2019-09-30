@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using HrPayrollFinalProject.DAL;
 using HrPayrollFinalProject.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace HrPayrollFinalProject.Controllers
 {
@@ -56,10 +58,22 @@ namespace HrPayrollFinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Surname,FathersName,BirthDate,Adress,Influnce,PassportNo,PassportExpireDate,Education,FamilyState,Gender,Photo")] Employees employees)
+        public async Task<IActionResult> Create([Bind("Id,Name,Surname,FathersName,BirthDate,Adress,Influnce,PassportNo,PassportExpireDate,Education,FamilyState,Gender,Photo")] Employees employees,IFormFile image)
         {
             if (ModelState.IsValid)
             {
+                //if (image==null && image.Length>0)
+                //{
+                //    var fileName = Path.GetFileName(image.FileName);
+                //    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
+                //    using (FileStream fileStream=new FileStream(filePath, FileMode.Create))
+                //    {
+                //        await image.CopyToAsync(fileStream);
+                //    }
+                //    employees.Photo = fileName;
+                //}
+
+
                 _context.Add(employees);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

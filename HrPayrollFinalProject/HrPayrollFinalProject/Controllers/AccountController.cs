@@ -23,7 +23,6 @@ namespace HrPayrollFinalProject.Controllers
             UserManager<AppUser> _userManager,
             SignInManager<AppUser> _signInManager
             )
-
         {
             userManager = _userManager;
             dbContext = _dbContext;
@@ -34,7 +33,6 @@ namespace HrPayrollFinalProject.Controllers
         {
             return View();
         }
-
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
@@ -56,13 +54,13 @@ namespace HrPayrollFinalProject.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
             }
-            return RedirectToAction("Login","Account");
+            return RedirectToAction("Login", "Account");
         }
 
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-            return RedirectToAction("Login","Account");
+            return RedirectToAction("Login", "Account");
         }
         [HttpGet]
         public IActionResult Login()
@@ -70,27 +68,24 @@ namespace HrPayrollFinalProject.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel loginViewModel)
+        [HttpPost,ValidateAntiForgeryToken]
+        public async Task< IActionResult> Login(LoginViewModel loginViewModel)
         {
             if (!ModelState.IsValid) return View(loginViewModel);
-
             AppUser appUser = await userManager.FindByNameAsync(loginViewModel.Username);
-
-            if (appUser == null)
+            if (appUser==null)
             {
-                ModelState.AddModelError("", "Username or password isvalid");
+                ModelState.AddModelError("", "Username or password invalid");
                 return View(loginViewModel);
             }
-            Microsoft.AspNetCore.Identity.SignInResult signInResult =
-                await signInManager.PasswordSignInAsync(appUser, loginViewModel.Password, true, true);
 
+            Microsoft.AspNetCore.Identity.SignInResult signInResult = await signInManager.PasswordSignInAsync(appUser, loginViewModel.Password, true, true);
             if (!signInResult.Succeeded)
             {
-                ModelState.AddModelError("","Username or password isvalid");
+                ModelState.AddModelError("", "Username or password invalid");
+                return View(loginViewModel);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index","Home");
         }
     }
 }
