@@ -13,7 +13,7 @@ using System.IO;
 
 namespace HrPayrollFinalProject.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Payroll")]
     public class EmployeesController : Controller
     {
         private readonly PayrollDbContext _context;
@@ -58,6 +58,7 @@ namespace HrPayrollFinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Create([Bind("Id,Name,Surname,FathersName,BirthDate,Adress,Influnce,PassportNo,PassportExpireDate,Education,FamilyState,Gender,Photo")] Employees employees,IFormFile image)
         {
             if (ModelState.IsValid)

@@ -8,6 +8,8 @@ using HrPayrollFinalProject.DAL;
 using Microsoft.AspNetCore.Identity;
 using HrPayrollFinalProject.Models;
 using Microsoft.AspNetCore.Authorization;
+using HrPayrollFinalProject.Utilities;
+using static HrPayrollFinalProject.Utilities.StaticData;
 
 namespace HrPayrollFinalProject.Controllers
 {
@@ -16,17 +18,20 @@ namespace HrPayrollFinalProject.Controllers
         private readonly PayrollDbContext dbContext;
         private readonly UserManager<AppUser> userManager;
         private readonly SignInManager<AppUser> signInManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
         public AccountController
             (
             PayrollDbContext _dbContext,
             UserManager<AppUser> _userManager,
-            SignInManager<AppUser> _signInManager
+            SignInManager<AppUser> _signInManager,
+            RoleManager<IdentityRole> _roleManager
             )
         {
             userManager = _userManager;
             dbContext = _dbContext;
             signInManager = _signInManager;
+            roleManager = _roleManager;
         }
         [HttpGet]
         public IActionResult Register()
@@ -54,6 +59,8 @@ namespace HrPayrollFinalProject.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
             }
+            await userManager.AddToRoleAsync(newAppUser, Roles.Payroll.ToString());
+
             return RedirectToAction("Login", "Account");
         }
 
@@ -86,6 +93,29 @@ namespace HrPayrollFinalProject.Controllers
                 return View(loginViewModel);
             }
             return RedirectToAction("Index","Home");
+        }
+
+        public async Task SeedRoles()
+        {
+            if (! await roleManager.RoleExistsAsync(Roles.Admin.ToString()))
+            {
+                await roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
+            }
+
+            if (! await roleManager.RoleExistsAsync(Roles.Department.ToString()))
+            {
+                await roleManager.CreateAsync(new IdentityRole(Roles.Department.ToString()));
+            }
+
+            if (! await roleManager.RoleExistsAsync(Roles.Hr.ToString()))
+            {
+                await roleManager.CreateAsync(new IdentityRole(Roles.Hr.ToString()));
+            }
+
+            if (! await roleManager.RoleExistsAsync(Roles.Payroll.ToString()))
+            {
+                await roleManager.CreateAsync(new IdentityRole(Roles.Payroll.ToString()));
+            }
         }
     }
 }

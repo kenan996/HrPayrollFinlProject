@@ -239,9 +239,13 @@
                                         <li class="nav-item active">
                                             <a asp-controller="Employees" asp-action="Index" class="nav-link">Employees Table</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-controller="Employees" asp-action="Create">Create</a>
-                                        </li>
+                                        @if (User.IsInRole(StaticData.PayrollRole))
+                                        {
+                                            <li class="nav-item">
+                                                <a class="nav-link" asp-controller="Employees" asp-action="Create">Create</a>
+                                            </li>
+                                        }
+
                                         <li class="nav-item">
                                             <a class="nav-link" href="#">Responsive Table</a>
                                         </li>

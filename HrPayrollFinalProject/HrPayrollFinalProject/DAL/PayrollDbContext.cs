@@ -48,7 +48,7 @@ namespace HrPayrollFinalProject.DAL
                 .Property(g => g.Gender)
                 .HasConversion(c => c.ToString(),
                 c => (Gender)Enum.Parse(typeof(Gender), c)
-                );
+                );  
         }
     }
 

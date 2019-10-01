@@ -33,8 +33,13 @@ using HrPayrollFinalProject.Controllers;
 
 #line default
 #line hidden
+#line 5 "C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\Views\_ViewImports.cshtml"
+using HrPayrollFinalProject.Utilities;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2c35006161f232c1ba832cda92490f7a19cba8d6", @"/Views/AppUser/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b562702923b9caff1cb94c016b4fc5b9a45c53bf", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ad9cb1baaf8ac090f2d4f65f3b809d1dc1332ad2", @"/Views/_ViewImports.cshtml")]
     public class Views_AppUser_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

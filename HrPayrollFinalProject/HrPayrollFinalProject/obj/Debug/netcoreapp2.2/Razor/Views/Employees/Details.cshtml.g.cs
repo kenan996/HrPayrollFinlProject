@@ -33,8 +33,13 @@ using HrPayrollFinalProject.Controllers;
 
 #line default
 #line hidden
+#line 5 "C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\Views\_ViewImports.cshtml"
+using HrPayrollFinalProject.Utilities;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"414708edf6172de27d30f5479260010d13eea9f2", @"/Views/Employees/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b562702923b9caff1cb94c016b4fc5b9a45c53bf", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ad9cb1baaf8ac090f2d4f65f3b809d1dc1332ad2", @"/Views/_ViewImports.cshtml")]
     public class Views_Employees_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<HrPayrollFinalProject.Models.Employees>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Edit", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -317,7 +322,7 @@ using HrPayrollFinalProject.Controllers;
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
             EndContext();
             BeginContext(2756, 75, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "414708edf6172de27d30f5479260010d13eea9f216394", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "414708edf6172de27d30f5479260010d13eea9f216582", async() => {
                 BeginContext(2823, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -353,7 +358,7 @@ using HrPayrollFinalProject.Controllers;
             WriteLiteral(" |\r\n    ");
             EndContext();
             BeginContext(2839, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "414708edf6172de27d30f5479260010d13eea9f218830", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "414708edf6172de27d30f5479260010d13eea9f219018", async() => {
                 BeginContext(2881, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();

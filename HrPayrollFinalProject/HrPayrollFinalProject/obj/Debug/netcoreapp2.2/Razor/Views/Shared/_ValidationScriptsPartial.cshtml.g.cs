@@ -33,8 +33,13 @@ using HrPayrollFinalProject.Controllers;
 
 #line default
 #line hidden
+#line 5 "C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\Views\_ViewImports.cshtml"
+using HrPayrollFinalProject.Utilities;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b779fb65eac618121b2621914f50d4eb8e5e74a8", @"/Views/Shared/_ValidationScriptsPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b562702923b9caff1cb94c016b4fc5b9a45c53bf", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ad9cb1baaf8ac090f2d4f65f3b809d1dc1332ad2", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__ValidationScriptsPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/lib/jquery-validation/jquery.validate.js"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -75,12 +80,12 @@ using HrPayrollFinalProject.Controllers;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             BeginContext(0, 219, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b779fb65eac618121b2621914f50d4eb8e5e74a88745", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b779fb65eac618121b2621914f50d4eb8e5e74a88933", async() => {
                 BeginContext(35, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(41, 66, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b779fb65eac618121b2621914f50d4eb8e5e74a89135", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b779fb65eac618121b2621914f50d4eb8e5e74a89323", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -98,7 +103,7 @@ using HrPayrollFinalProject.Controllers;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(113, 90, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b779fb65eac618121b2621914f50d4eb8e5e74a810388", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b779fb65eac618121b2621914f50d4eb8e5e74a810576", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -133,12 +138,12 @@ using HrPayrollFinalProject.Controllers;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(221, 914, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b779fb65eac618121b2621914f50d4eb8e5e74a812649", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b779fb65eac618121b2621914f50d4eb8e5e74a812837", async() => {
                 BeginContext(256, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(262, 381, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b779fb65eac618121b2621914f50d4eb8e5e74a813043", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b779fb65eac618121b2621914f50d4eb8e5e74a813231", async() => {
                     BeginContext(628, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();
@@ -166,7 +171,7 @@ using HrPayrollFinalProject.Controllers;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(649, 470, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b779fb65eac618121b2621914f50d4eb8e5e74a815125", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b779fb65eac618121b2621914f50d4eb8e5e74a815313", async() => {
                     BeginContext(1104, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();

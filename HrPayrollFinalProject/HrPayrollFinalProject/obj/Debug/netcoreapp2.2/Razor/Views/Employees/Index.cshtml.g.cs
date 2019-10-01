@@ -33,8 +33,13 @@ using HrPayrollFinalProject.Controllers;
 
 #line default
 #line hidden
+#line 5 "C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\Views\_ViewImports.cshtml"
+using HrPayrollFinalProject.Utilities;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a11d27c5944cd8367daff9b55411b1fde923ad71", @"/Views/Employees/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b562702923b9caff1cb94c016b4fc5b9a45c53bf", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ad9cb1baaf8ac090f2d4f65f3b809d1dc1332ad2", @"/Views/_ViewImports.cshtml")]
     public class Views_Employees_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Employees>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Edit", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -257,7 +262,7 @@ using HrPayrollFinalProject.Controllers;
             WriteLiteral("</td>\r\n                                        <td>\r\n                                            ");
             EndContext();
             BeginContext(7356, 74, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a11d27c5944cd8367daff9b55411b1fde923ad7113928", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a11d27c5944cd8367daff9b55411b1fde923ad7114116", async() => {
                 BeginContext(7422, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -293,7 +298,7 @@ using HrPayrollFinalProject.Controllers;
             WriteLiteral("\r\n                                        </td>\r\n                                        <td>\r\n                                            ");
             EndContext();
             BeginContext(7569, 80, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a11d27c5944cd8367daff9b55411b1fde923ad7116539", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a11d27c5944cd8367daff9b55411b1fde923ad7116727", async() => {
                 BeginContext(7639, 6, true);
                 WriteLiteral("Delete");
                 EndContext();
@@ -329,7 +334,7 @@ using HrPayrollFinalProject.Controllers;
             WriteLiteral("\r\n                                        </td>\r\n                                        <td>\r\n                                            ");
             EndContext();
             BeginContext(7788, 80, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a11d27c5944cd8367daff9b55411b1fde923ad7119154", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a11d27c5944cd8367daff9b55411b1fde923ad7119342", async() => {
                 BeginContext(7857, 7, true);
                 WriteLiteral("Details");
                 EndContext();
