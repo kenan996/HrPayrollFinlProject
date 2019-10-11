@@ -5,7 +5,6 @@
 }
 
 <h1>Create</h1>
-
 <h4>Employees</h4>
 <hr />
 <div>
@@ -71,7 +70,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Photo" class="control-label"></label>
-                <input asp-for="Photo" class="form-control" />
+                <input asp-for="Photo" accept="image/*" class="form-control" />
                 <span asp-validation-for="Photo" class="text-danger"></span>
             </div>
             <div class="form-group">

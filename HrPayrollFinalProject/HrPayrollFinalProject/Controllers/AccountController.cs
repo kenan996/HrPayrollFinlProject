@@ -33,89 +33,42 @@ namespace HrPayrollFinalProject.Controllers
             signInManager = _signInManager;
             roleManager = _roleManager;
         }
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
-        [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
-        {
-            if (!ModelState.IsValid) return View(registerViewModel);
 
-            AppUser newAppUser = new AppUser
-            {
-                Name = registerViewModel.Name,
-                Surname = registerViewModel.Surname,
-                Email = registerViewModel.Email,
-                UserName = registerViewModel.Username,
-            };
-
-            IdentityResult identityResult = await userManager.CreateAsync(newAppUser, registerViewModel.Password);
-            if (!identityResult.Succeeded)
-            {
-                foreach (var error in identityResult.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
-            }
-            await userManager.AddToRoleAsync(newAppUser, Roles.Payroll.ToString());
-
-            return RedirectToAction("Login", "Account");
-        }
 
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
+
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
-        [HttpPost,ValidateAntiForgeryToken]
-        public async Task< IActionResult> Login(LoginViewModel loginViewModel)
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
-            if (!ModelState.IsValid) return View(loginViewModel);
-            AppUser appUser = await userManager.FindByNameAsync(loginViewModel.Username);
-            if (appUser==null)
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Username or password invalid");
-                return View(loginViewModel);
-            }
+                AppUser appUser = await userManager.FindByEmailAsync(loginViewModel.Username) ?? await userManager.FindByNameAsync(loginViewModel.Username);
+                if (appUser==null)
+                {
+                    ModelState.AddModelError("", "Username or password invalid");
+                    return View();
+                }
 
-            Microsoft.AspNetCore.Identity.SignInResult signInResult = await signInManager.PasswordSignInAsync(appUser, loginViewModel.Password, true, true);
-            if (!signInResult.Succeeded)
-            {
-                ModelState.AddModelError("", "Username or password invalid");
-                return View(loginViewModel);
-            }
-            return RedirectToAction("Index","Home");
-        }
+                Microsoft.AspNetCore.Identity.SignInResult signInResult = await signInManager.PasswordSignInAsync(appUser.UserName,loginViewModel.Password, false, true);
+                if (signInResult.Succeeded)
+                  {
+                        return RedirectToAction("Index", "Home");
+                }
 
-        public async Task SeedRoles()
-        {
-            if (! await roleManager.RoleExistsAsync(Roles.Admin.ToString()))
-            {
-                await roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
+                ModelState.AddModelError("", "Incorrect password. Try again or click to reset password");
+                
             }
-
-            if (! await roleManager.RoleExistsAsync(Roles.Department.ToString()))
-            {
-                await roleManager.CreateAsync(new IdentityRole(Roles.Department.ToString()));
-            }
-
-            if (! await roleManager.RoleExistsAsync(Roles.Hr.ToString()))
-            {
-                await roleManager.CreateAsync(new IdentityRole(Roles.Hr.ToString()));
-            }
-
-            if (! await roleManager.RoleExistsAsync(Roles.Payroll.ToString()))
-            {
-                await roleManager.CreateAsync(new IdentityRole(Roles.Payroll.ToString()));
-            }
+            return View();
         }
     }
 }

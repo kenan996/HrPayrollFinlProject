@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\html\css\**" />
+    <Compile Remove="wwwroot\html\css\**." />
     <Compile Remove="wwwroot\html\js\**" />
     <Content Remove="wwwroot\html\css\**" />
     <Content Remove="wwwroot\html\js\**" />
@@ -36,8 +36,8 @@
 
 
   <ItemGroup>
+    <Folder Include="wwwroot\img\EmployeeImg\" />
     <Folder Include="wwwroot\lib\jquery\" />
-    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
 </Project>

@@ -236,10 +236,13 @@
                             <ul id="tables_drp" class="nav flex-column collapse collapse-level-1">
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
+                                        @if (User.IsInRole("Admin"))
+                                        {
                                         <li class="nav-item active">
                                             <a asp-controller="Employees" asp-action="Index" class="nav-link">Employees Table</a>
                                         </li>
-                                        @if (User.IsInRole(StaticData.PayrollRole))
+                                        }
+                                        @if (User.IsInRole("Admin"))
                                         {
                                             <li class="nav-item">
                                                 <a class="nav-link" asp-controller="Employees" asp-action="Create">Create</a>

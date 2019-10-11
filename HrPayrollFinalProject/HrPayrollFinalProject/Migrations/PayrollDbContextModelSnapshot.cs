@@ -190,27 +190,30 @@ namespace HrPayrollFinalProject.Migrations
 
                     b.Property<string>("FathersName")
                         .IsRequired()
-                        .HasMaxLength(50);
+                        .HasMaxLength(15);
 
                     b.Property<string>("Gender")
                         .IsRequired();
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
                     b.Property<string>("Influnce")
                         .IsRequired();
 
                     b.Property<string>("Name")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(20);
 
                     b.Property<DateTime>("PassportExpireDate");
 
                     b.Property<string>("PassportNo")
                         .IsRequired();
 
-                    b.Property<string>("Photo")
-                        .IsRequired();
-
                     b.Property<string>("Surname")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(25);
 
                     b.HasKey("Id");
 

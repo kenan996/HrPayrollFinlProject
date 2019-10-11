@@ -14,10 +14,5 @@ namespace HrPayrollFinalProject.Utilities
             Hr=3,
             Payroll=4
         }
-
-        public const string AdminRole = "Admin";
-        public const string DepartmentRole = "Department";
-        public const string HrRole = "Hr";
-        public const string PayrollRole = "Payroll";
     }
 }

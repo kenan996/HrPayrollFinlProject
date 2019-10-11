@@ -10,19 +10,23 @@ using HrPayrollFinalProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Hosting;
 
 namespace HrPayrollFinalProject.Controllers
 {
-    [Authorize(Roles ="Payroll")]
+    [Authorize(Roles ="Admin")]
     public class EmployeesController : Controller
     {
         private readonly PayrollDbContext _context;
+        private readonly IHostingEnvironment _hostingEnvironment;
         
-        public EmployeesController(PayrollDbContext context)
+        public EmployeesController(PayrollDbContext context, IHostingEnvironment hostingEnvironment)
         {
+            _hostingEnvironment = hostingEnvironment;
             _context = context;
         }
-       
+
         // GET: Employees
         public async Task<IActionResult> Index()
         {
@@ -59,27 +63,41 @@ namespace HrPayrollFinalProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public async Task<IActionResult> Create([Bind("Id,Name,Surname,FathersName,BirthDate,Adress,Influnce,PassportNo,PassportExpireDate,Education,FamilyState,Gender,Photo")] Employees employees,IFormFile image)
+        public async Task<IActionResult> Create([Bind("Id,Name,Surname,FathersName,BirthDate,Adress,Influnce,PassportNo,PassportExpireDate,Education,FamilyState,Gender,Photo,")] Employees employees)
         {
+            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid)
+            {
+                return View();
+            }
+
+            if (!employees.Photo.ContentType.Contains("image/"))
+            {
+                ModelState.AddModelError("Photo", "File type should be image");
+                return View();
+            }
+
+            string path = Path.Combine(_hostingEnvironment.WebRootPath, "img");
+            string fileName = Path.Combine("EmployeeImg", Guid.NewGuid().ToString() + employees.Photo.FileName);
+            string resultPath = Path.Combine(path, fileName);
+
+            using (FileStream fileStream = new FileStream(resultPath, FileMode.Create))
+            {
+                await employees.Photo.CopyToAsync(fileStream);
+            }
+
+            employees.ImageUrl = fileName;
+            await _context.Employees.AddAsync(employees);
+            await _context.SaveChangesAsync();
+
+
             if (ModelState.IsValid)
             {
-                //if (image==null && image.Length>0)
-                //{
-                //    var fileName = Path.GetFileName(image.FileName);
-                //    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
-                //    using (FileStream fileStream=new FileStream(filePath, FileMode.Create))
-                //    {
-                //        await image.CopyToAsync(fileStream);
-                //    }
-                //    employees.Photo = fileName;
-                //}
-
-
                 _context.Add(employees);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(employees);
+
+            return RedirectToAction("Index");
         }
 
         // GET: Employees/Edit/5
@@ -100,7 +118,6 @@ namespace HrPayrollFinalProject.Controllers
 
         // POST: Employees/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,FathersName,BirthDate,Adress,Influnce,PassportNo,PassportExpireDate,Education,FamilyState,Gender,Photo")] Employees employees)
@@ -150,7 +167,7 @@ namespace HrPayrollFinalProject.Controllers
 
             return View(employees);
         }
-
+            
         // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

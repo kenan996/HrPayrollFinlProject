@@ -46,12 +46,15 @@ namespace HrPayrollFinalProject.Models
         [Required]
         [EnumDataType(typeof(Gender))]
         public Gender Gender { get; set; }
-        [Required]
-        [DataType(DataType.Upload)]
-        public string Photo { get; set; }
+        [Required(ErrorMessage ="Choose Photo")]
         [NotMapped]
+        [DataType(DataType.Upload)] 
+        public IFormFile Photo { get; set; }
         [Required]
-        public IFormFile ImageUrl { get; set; }
+        [StringLength(200)]
+        public string ImageUrl { get; set; }
+
+
         public virtual ICollection<Branch> Branches { get; set; }
         public virtual ICollection<OldWorkPlace> OldWorkPlaces { get; set; }
         public virtual ICollection<WorkPlace> WorkPlaces { get; set; }
