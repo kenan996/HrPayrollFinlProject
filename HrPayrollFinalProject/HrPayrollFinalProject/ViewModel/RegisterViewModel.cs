@@ -7,7 +7,16 @@ using System.Threading.Tasks;
 namespace HrPayrollFinalProject.ViewModel
 {
 
-
+    public class RegisterViewModel
+    {
+        [Required]
+        public string Username { get; set; }
+        [Required]
+        public string Password { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+    }
     public class LoginViewModel
     {
         [Required]

@@ -30,7 +30,7 @@ namespace HrPayrollFinalProject
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+                
             services.AddDbContext<PayrollDbContext>(x =>
             {
                 x.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);

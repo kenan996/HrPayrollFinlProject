@@ -68,10 +68,14 @@
                 <select asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<Gender>()"></select>
                 <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
-
+            <div>
+                <label>Current Image</label>
+                <img class="img-thumbnail" width="150" style="display:block" src="~/img/@Model.ImageUrl"
+                     asp-append-version="true" />
+            </div>
             <div class="form-group">
                 <label asp-for="Photo" class="control-label"></label>
-                <input asp-for="Photo" class="form-control" />
+                <input asp-for="Photo" accept="image/*" class="form-control" />
                 <span asp-validation-for="Photo" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -87,4 +91,3 @@
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
 }
-

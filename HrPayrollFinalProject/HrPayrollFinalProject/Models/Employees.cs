@@ -46,7 +46,6 @@ namespace HrPayrollFinalProject.Models
         [Required]
         [EnumDataType(typeof(Gender))]
         public Gender Gender { get; set; }
-        [Required(ErrorMessage ="Choose Photo")]
         [NotMapped]
         [DataType(DataType.Upload)] 
         public IFormFile Photo { get; set; }

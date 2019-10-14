@@ -204,30 +204,35 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#forms_drp">
-                                <i class="ion ion-ios-list-box"></i>
-                                <span class="nav-link-text">Forms</span>
-                            </a>
-                            <ul id="forms_drp" class="nav flex-column collapse collapse-level-1">
-                                <li class="nav-item">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Form Mask</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Form Wizard</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">File Upload</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Editor</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#forms_drp">
+                                    <i class="ion ion-ios-list-box"></i>
+                                    <span class="nav-link-text">Roles</span>
+                                </a>
+                                <ul id="forms_drp" class="nav flex-column collapse collapse-level-1">
+                                    <li class="nav-item">
+                                        <ul class="nav flex-column">
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" asp-controller="Admin" asp-action="Index">User Table</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" asp-controller="Admin" asp-action="Create">Create User</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">Create Role</a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+
                         <li class="nav-item active">
                             <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#tables_drp">
                                 <i class="ion ion-ios-today"></i>
@@ -238,23 +243,15 @@
                                     <ul class="nav flex-column">
                                         @if (User.IsInRole("Admin"))
                                         {
-                                        <li class="nav-item active">
-                                            <a asp-controller="Employees" asp-action="Index" class="nav-link">Employees Table</a>
-                                        </li>
-                                        }
-                                        @if (User.IsInRole("Admin"))
-                                        {
+                                            <li class="nav-item active">
+                                                <a asp-controller="Employees" asp-action="Index" class="nav-link">Employee Table</a>
+                                            </li>
+
                                             <li class="nav-item">
                                                 <a class="nav-link" asp-controller="Employees" asp-action="Create">Create</a>
                                             </li>
                                         }
 
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Responsive Table</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Editable Table</a>
-                                        </li>
                                     </ul>
                                 </li>
                             </ul>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AppUser>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-black p-1 m-1">
+    <h2>User List</h2>
+</div>
+<div class="col-sm">
+    <table class="table table-bordered table-striped table-sm p-1 m-1">
+        <tr>
+            <th>User Name</th>
+            <th>User Email</th>
+            <th>Edit Delete</th>
+            
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.Email</td>
+                <td>
+                    <form asp-route-id="@item.Id" asp-action="Delete" method="post">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-yellow">Edit</a>
+                        <input type="submit" class="btn btn-danger" value="Delete" />
+
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <a class="btn btn-blue" asp-action="Create">Create</a>
+</div>

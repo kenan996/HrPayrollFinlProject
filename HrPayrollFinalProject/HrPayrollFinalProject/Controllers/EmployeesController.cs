@@ -12,15 +12,18 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Hosting;
+using static HrPayrollFinalProject.Extensions.IFormExtensions;
+using static HrPayrollFinalProject.Utilities.RemoveFile;
+using HrPayrollFinalProject.ViewModel;
 
 namespace HrPayrollFinalProject.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class EmployeesController : Controller
     {
         private readonly PayrollDbContext _context;
         private readonly IHostingEnvironment _hostingEnvironment;
-        
+
         public EmployeesController(PayrollDbContext context, IHostingEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
@@ -37,16 +40,13 @@ namespace HrPayrollFinalProject.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var employees = await _context.Employees
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var employees = await _context.Employees.FirstOrDefaultAsync(m => m.Id == id);
+
             if (employees == null)
-            {
                 return NotFound();
-            } 
+
 
             return View(employees);
         }
@@ -70,20 +70,13 @@ namespace HrPayrollFinalProject.Controllers
                 return View();
             }
 
-            if (!employees.Photo.ContentType.Contains("image/"))
+            if (!employees.Photo.IsImage())
             {
                 ModelState.AddModelError("Photo", "File type should be image");
                 return View();
             }
 
-            string path = Path.Combine(_hostingEnvironment.WebRootPath, "img");
-            string fileName = Path.Combine("EmployeeImg", Guid.NewGuid().ToString() + employees.Photo.FileName);
-            string resultPath = Path.Combine(path, fileName);
-
-            using (FileStream fileStream = new FileStream(resultPath, FileMode.Create))
-            {
-                await employees.Photo.CopyToAsync(fileStream);
-            }
+            string fileName = await employees.Photo.Save(_hostingEnvironment.WebRootPath, "EmployeeImg");
 
             employees.ImageUrl = fileName;
             await _context.Employees.AddAsync(employees);
@@ -115,6 +108,7 @@ namespace HrPayrollFinalProject.Controllers
             }
             return View(employees);
         }
+
 
         // POST: Employees/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -150,6 +144,7 @@ namespace HrPayrollFinalProject.Controllers
             return View(employees);
         }
 
+    
         // GET: Employees/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -167,13 +162,18 @@ namespace HrPayrollFinalProject.Controllers
 
             return View(employees);
         }
-            
+
         // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
+            if (id == null)
+                return NotFound();
+
             var employees = await _context.Employees.FindAsync(id);
+
+            RemoveImage(_hostingEnvironment.WebRootPath, employees.ImageUrl);
             _context.Employees.Remove(employees);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
