@@ -42,3 +42,4 @@ C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\Admin\Index.cshtml.g.cs
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\Admin\Create.cshtml.g.cs
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\Admin\Edit.cshtml.g.cs
+C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\AdminRole\Create.cshtml.g.cs

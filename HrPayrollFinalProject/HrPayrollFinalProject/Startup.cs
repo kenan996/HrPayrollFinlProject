@@ -46,13 +46,11 @@ namespace HrPayrollFinalProject
                 options.User.RequireUniqueEmail = true;
                 options.Password.RequireNonAlphanumeric = false;
 
-                
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.AllowedForNewUsers = true;
             });
                                
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -65,7 +65,7 @@ namespace HrPayrollFinalProject.Controllers
                         return RedirectToAction("Index", "Home");
                 }
 
-                ModelState.AddModelError("", "Incorrect password. Try again or click to reset password");
+                ModelState.AddModelError("", "Incorrect password. Try again or notice to admin for reset password");
                 
             }
             return View();

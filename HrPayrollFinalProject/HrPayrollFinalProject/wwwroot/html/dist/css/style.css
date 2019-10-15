@@ -14018,10 +14018,11 @@ Project:	pinkman
     .hk-wrapper .hk-navbar .feather-icon > svg {
       width: 20px;
       height: 20px; }
-  .hk-wrapper .hk-navbar i.ion {
-    font-size: 22px;
-    position: relative;
-    top: 3px; }
+    .hk-wrapper .hk-navbar i .fas {
+        font-size: 22px;
+        position: relative;
+        top: 3px;
+    }
   .hk-wrapper .hk-navbar a.navbar-toggle-btn {
     margin-right: 18px; }
   .hk-wrapper .hk-navbar a.navbar-brand {

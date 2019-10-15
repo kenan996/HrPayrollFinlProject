@@ -114,34 +114,79 @@ namespace HrPayrollFinalProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,FathersName,BirthDate,Adress,Influnce,PassportNo,PassportExpireDate,Education,FamilyState,Gender,Photo")] Employees employees)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,FathersName,BirthDate,Adress,Influnce,PassportNo,PassportExpireDate,Education,FamilyState,Gender,Photo")] Employees employeeEditViewModel)
         {
-            if (id != employees.Id)
-            {
-                return NotFound();
-            }
 
-            if (ModelState.IsValid)
+
+            if (!ModelState.IsValid)
+                return View(employeeEditViewModel);
+
+            Employees employeeFromDb = await _context.Employees.FindAsync(id);
+
+
+            if (employeeEditViewModel.Photo != null)
             {
-                try
+                if (!employeeEditViewModel.Photo.IsImage())
                 {
-                    _context.Update(employees);
-                    await _context.SaveChangesAsync();
+                    ModelState.AddModelError("Photo", "File type invalid");
+                    return View(employeeEditViewModel);
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EmployeesExists(employees.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+
+                //Delete image
+                RemoveImage(_hostingEnvironment.WebRootPath, employeeFromDb.ImageUrl);
+                //Update image
+                employeeFromDb.ImageUrl = await employeeEditViewModel.Photo.Save(_hostingEnvironment.WebRootPath, "EmployeeImg");
+               
+
+
+                
             }
-            return View(employees);
+            employeeFromDb.Surname = employeeEditViewModel.Surname;
+            employeeFromDb.Name = employeeEditViewModel.Name;
+            employeeFromDb.FathersName = employeeEditViewModel.FathersName;
+            employeeFromDb.BirthDate = employeeEditViewModel.BirthDate;
+            employeeFromDb.Adress = employeeEditViewModel.Adress;
+            employeeFromDb.Influnce = employeeEditViewModel.Influnce;
+            employeeFromDb.PassportNo = employeeEditViewModel.PassportNo;
+            employeeFromDb.Education = employeeEditViewModel.Education;
+            employeeFromDb.FamilyState = employeeEditViewModel.FamilyState;
+            employeeFromDb.Gender = employeeEditViewModel.Gender;
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+
+
+
+
+
+
+            //if (id != employees.Id)
+            //{
+            //    return NotFound();
+            //}
+
+            //if (ModelState.IsValid)
+            //{
+            //    try
+            //    {
+            //        _context.Update(employees);
+            //        await _context.SaveChangesAsync();
+            //    }
+            //    catch (DbUpdateConcurrencyException)
+            //    {
+            //        if (!EmployeesExists(employees.Id))
+            //        {
+            //            return NotFound();
+            //        }
+            //        else
+            //        {
+            //            throw;
+            //        }
+            //    }
+            //    return RedirectToAction(nameof(Index));
+            //}
+            //return View(employees);
         }
 
     

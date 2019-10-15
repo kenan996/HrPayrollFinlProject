@@ -120,52 +120,51 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_drp">
-                                <i class="ion ion-ios-person-add"></i>
-                                <span class="nav-link-text">Authentication</span>
-                            </a>
-                            <ul id="auth_drp" class="nav flex-column collapse collapse-level-1">
-                                <li class="nav-item">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-controller="Account" asp-action="Register">
-                                                Register
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-controller="Account" asp-action="Login">
-                                                Login
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#recover_drp">
-                                                Recover Password
-                                            </a>
-                                            <ul id="recover_drp" class="nav flex-column collapse collapse-level-2">
-                                                <li class="nav-item">
-                                                    <ul class="nav flex-column">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Forgot Password</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="#">Reset Password</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                       
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Error 404</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Maintenance</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_drp">
+                                    <i class="ion ion-ios-person-add"></i>
+                                    <span class="nav-link-text">Authentication</span>
+                                </a>
+                                <ul id="auth_drp" class="nav flex-column collapse collapse-level-1">
+                                    <li class="nav-item">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link" asp-controller="Account" asp-action="Login">
+                                                    Login
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#recover_drp">
+                                                    Recover Password
+                                                </a>
+                                                <ul id="recover_drp" class="nav flex-column collapse collapse-level-2">
+                                                    <li class="nav-item">
+                                                        <ul class="nav flex-column">
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" href="#">Forgot Password</a>
+                                                            </li>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" href="#">Reset Password</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">Error 404</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">Maintenance</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+
                         <li class="nav-item">
                             <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#pages_drp">
                                 <i class="ion ion-ios-copy"></i>
@@ -224,25 +223,27 @@
                                             </li>
 
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Create Role</a>
+                                                <a class="nav-link" asp-controller="AdminRole" asp-action="Index">Role Table</a>
                                             </li>
-
+                                            <li class="nav-item">
+                                                <a class="nav-link" asp-controller="AdminRole" asp-action="Create">Create Role</a>
+                                            </li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
                         }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#tables_drp">
+                                    <i class="ion ion-ios-today"></i>
+                                    <span class="nav-link-text">Employees</span>
+                                </a>
+                                <ul id="tables_drp" class="nav flex-column collapse collapse-level-1">
+                                    <li class="nav-item">
+                                        <ul class="nav flex-column">
 
-                        <li class="nav-item active">
-                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#tables_drp">
-                                <i class="ion ion-ios-today"></i>
-                                <span class="nav-link-text">Employees</span>
-                            </a>
-                            <ul id="tables_drp" class="nav flex-column collapse collapse-level-1">
-                                <li class="nav-item">
-                                    <ul class="nav flex-column">
-                                        @if (User.IsInRole("Admin"))
-                                        {
                                             <li class="nav-item active">
                                                 <a asp-controller="Employees" asp-action="Index" class="nav-link">Employee Table</a>
                                             </li>
@@ -250,12 +251,14 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" asp-controller="Employees" asp-action="Create">Create</a>
                                             </li>
-                                        }
 
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+
                         <li class="nav-item">
 
                             <ul id="charts_drp" class="nav flex-column collapse collapse-level-1">
