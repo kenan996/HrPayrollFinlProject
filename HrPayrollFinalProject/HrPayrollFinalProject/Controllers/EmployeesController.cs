@@ -18,7 +18,7 @@ using HrPayrollFinalProject.ViewModel;
 
 namespace HrPayrollFinalProject.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Hr")]
     public class EmployeesController : Controller
     {
         private readonly PayrollDbContext _context;
@@ -62,7 +62,6 @@ namespace HrPayrollFinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AllowAnonymous]
         public async Task<IActionResult> Create([Bind("Id,Name,Surname,FathersName,BirthDate,Adress,Influnce,PassportNo,PassportExpireDate,Education,FamilyState,Gender,Photo,")] Employees employees)
         {
             if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid)
@@ -81,16 +80,7 @@ namespace HrPayrollFinalProject.Controllers
             employees.ImageUrl = fileName;
             await _context.Employees.AddAsync(employees);
             await _context.SaveChangesAsync();
-
-
-            if (ModelState.IsValid)
-            {
-                _context.Add(employees);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Employees/Edit/5
@@ -156,37 +146,6 @@ namespace HrPayrollFinalProject.Controllers
             return RedirectToAction(nameof(Index));
 
 
-
-
-
-
-
-            //if (id != employees.Id)
-            //{
-            //    return NotFound();
-            //}
-
-            //if (ModelState.IsValid)
-            //{
-            //    try
-            //    {
-            //        _context.Update(employees);
-            //        await _context.SaveChangesAsync();
-            //    }
-            //    catch (DbUpdateConcurrencyException)
-            //    {
-            //        if (!EmployeesExists(employees.Id))
-            //        {
-            //            return NotFound();
-            //        }
-            //        else
-            //        {
-            //            throw;
-            //        }
-            //    }
-            //    return RedirectToAction(nameof(Index));
-            //}
-            //return View(employees);
         }
 
     
@@ -227,6 +186,41 @@ namespace HrPayrollFinalProject.Controllers
         private bool EmployeesExists(int id)
         {
             return _context.Employees.Any(e => e.Id == id);
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> Calculate(int []id)
+        {
+            //Default
+            var salary = 300;
+            if (id.Length == 0)
+            {
+                foreach(var elm in id)
+                {
+                  var data = _context.Employees.Where(x => x.Id == elm)
+                                 .Include(x => x.Bonus)
+                                   .Include(x => x.GetVacations)
+                                      .Include(x => x.Penalties)
+                                         .FirstOrDefault();
+
+                    var bonus = data.Bonus.Sum(x => x.Amount);
+
+                    var penalty = data.Penalties.Sum(x => x.Amount);
+
+                    //mezuniyyetde oldugu gun sayi
+                    var vacationStart= data.GetVacations.Single().StartDate;
+                    var vacationEnd = data.GetVacations.Single().EndDate;
+                    var days = vacationEnd.Day - vacationStart.Day;
+
+                    //maas hesabladigin ayin gunu
+                    var day = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+
+                    var price = ((salary / day) * days) + bonus - penalty;
+
+                }
+            }
+            return View();
         }
     }
 }

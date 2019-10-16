@@ -49,7 +49,7 @@ namespace HrPayrollFinalProject
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.AllowedForNewUsers = true;
             });
-                               
+            services.AddSession();                 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -72,7 +72,7 @@ namespace HrPayrollFinalProject
             app.UseStatusCodePages();
             app.UseAuthentication();
             app.UseCookiePolicy();
-            
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

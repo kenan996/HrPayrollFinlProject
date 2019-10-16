@@ -196,7 +196,6 @@ namespace HrPayrollFinalProject.Migrations
                         .IsRequired();
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasMaxLength(200);
 
                     b.Property<string>("Influnce")
