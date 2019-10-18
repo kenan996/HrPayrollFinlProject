@@ -48,9 +48,7 @@
                 <img class="brand-img d-inline-block" style="width:70px" height="40" src="~/html/dist/img/hr-payroll_logo.png"  alt="brand" />
             </a>
             <ul class="navbar-nav hk-navbar-content">
-                <li class="nav-item">
-                    <a id="navbar_search_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><i class="ion ion-ios-search"></i></a>
-                </li>
+               
                 <li class="nav-item dropdown dropdown-authentication">
                     <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media">
@@ -102,32 +100,14 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link link-with-badge" href="javascript:void(0);" data-toggle="collapse" data-target="#app_drp">
-                                <i class="ion ion-ios-apps"></i>
-                                <span class="nav-link-text">Application</span>
-                            </a>
-                            <ul id="app_drp" class="nav flex-column collapse collapse-level-1">
-                                <li class="nav-item">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Calendar</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">File Manager</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_drp">
-                                    <i class="ion ion-ios-person-add"></i>
-                                    <span class="nav-link-text">Authentication</span>
+                                <a class="nav-link link-with-badge" href="javascript:void(0);" data-toggle="collapse" data-target="#app_drp">
+                                    <i class="ion ion-ios-apps"></i>
+                                    <span class="nav-link-text">Application</span>
                                 </a>
-                                <ul id="auth_drp" class="nav flex-column collapse collapse-level-1">
+                                <ul id="app_drp" class="nav flex-column collapse collapse-level-1">
                                     <li class="nav-item">
                                         <ul class="nav flex-column">
                                             <li class="nav-item">
@@ -135,54 +115,53 @@
                                                     Login
                                                 </a>
                                             </li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_drp">
+                                    <i class="ion ion-ios-person-add"></i>
+                                    <span class="nav-link-text">Penalty</span>
+                                </a>
+                                <ul id="auth_drp" class="nav flex-column collapse collapse-level-1">
+                                    <li class="nav-item">
+                                        <ul class="nav flex-column">
+                                          
                                             <li class="nav-item">
-                                                <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#recover_drp">
-                                                    Recover Password
-                                                </a>
-                                                <ul id="recover_drp" class="nav flex-column collapse collapse-level-2">
-                                                    <li class="nav-item">
-                                                        <ul class="nav flex-column">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link" href="#">Forgot Password</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link" href="#">Reset Password</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
+                                                <a class="nav-link" asp-controller="Penalty" asp-action="Index">Penalty</a>
                                             </li>
 
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Department"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#pages_drp">
+                                    <i class="ion ion-ios-copy"></i>
+                                    <span class="nav-link-text">Bonus</span>
+                                </a>
+                                <ul id="pages_drp" class="nav flex-column collapse collapse-level-1">
+                                    <li class="nav-item">
+                                        <ul class="nav flex-column">
+
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Error 404</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#">Maintenance</a>
+                                                <a class="nav-link" asp-controller="Bonus" asp-action="Index">Bonus Table</a>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
                         }
-                        @if (User.IsInRole("Admin")||User.IsInRole("Department"))
-                        {
-                    <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#pages_drp">
-                            <i class="ion ion-ios-copy"></i>
-                            <span class="nav-link-text">Bonus</span>
-                        </a>
-                        <ul id="pages_drp" class="nav flex-column collapse collapse-level-1">
-                            <li class="nav-item">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link" asp-controller="Bonus" asp-action="Index">Bonus Table</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                        }
-                        
+
                     </ul>
                     <hr class="nav-separator">
                     <ul class="navbar-nav flex-column">
@@ -222,7 +201,7 @@
                                 </ul>
                             </li>
                         }
-                        @if (User.IsInRole("Admin") || User.IsInRole("Hr"))
+                        @if (User.IsInRole("Admin") || User.IsInRole("Department")||User.IsInRole("Department"))
                         {
                             <li class="nav-item active">
                                 <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#tables_drp">
@@ -240,9 +219,8 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" asp-controller="Employees" asp-action="Create">Create</a>
                                             </li>
-
                                             <li class="nav-item">
-                                                <a class="nav-link" asp-controller="Employees" asp-action="BonusTable">Bonus Table</a>
+                                                <a class="nav-link" asp-controller="Employees" asp-action="Calculate">Calculate</a>
                                             </li>
                                         </ul>
                                     </li>

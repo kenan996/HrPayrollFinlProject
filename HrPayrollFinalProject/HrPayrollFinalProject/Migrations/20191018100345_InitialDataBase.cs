@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HrPayrollFinalProject.Migrations
 {
-    public partial class initial : Migration
+    public partial class InitialDataBase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,15 +63,34 @@ namespace HrPayrollFinalProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EmployeeAccureds",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(nullable: true),
+                    SecondName = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<int>(nullable: false),
+                    AccuredSalary = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmployeeAccureds", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Employees",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: false),
-                    Surname = table.Column<string>(nullable: false),
-                    FathersName = table.Column<string>(maxLength: 50, nullable: false),
+                    Name = table.Column<string>(maxLength: 20, nullable: false),
+                    Surname = table.Column<string>(maxLength: 25, nullable: false),
+                    FathersName = table.Column<string>(maxLength: 15, nullable: false),
                     BirthDate = table.Column<DateTime>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Number = table.Column<int>(nullable: false),
                     Adress = table.Column<string>(nullable: false),
                     Influnce = table.Column<string>(nullable: false),
                     PassportNo = table.Column<string>(nullable: false),
@@ -79,7 +98,7 @@ namespace HrPayrollFinalProject.Migrations
                     Education = table.Column<string>(nullable: false),
                     FamilyState = table.Column<string>(nullable: false),
                     Gender = table.Column<string>(nullable: false),
-                    Photo = table.Column<string>(nullable: false)
+                    ImageUrl = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -213,8 +232,8 @@ namespace HrPayrollFinalProject.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Amount = table.Column<int>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
-                    EmlpoyeesId = table.Column<int>(nullable: false),
-                    EmployeesId = table.Column<int>(nullable: false)
+                    EmployeesId = table.Column<int>(nullable: false),
+                    EmlpoyeesId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -658,6 +677,9 @@ namespace HrPayrollFinalProject.Migrations
 
             migrationBuilder.DropTable(
                 name: "Continuities");
+
+            migrationBuilder.DropTable(
+                name: "EmployeeAccureds");
 
             migrationBuilder.DropTable(
                 name: "Grades");

@@ -1,0 +1,47 @@
+﻿@model Penalty
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Penalty</h1>
+<hr />
+<div>
+    <div class="col-md-4">
+        <form asp-action="EditPenalty" asp-controller="Penalty" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <div class="form-group">
+                <label class="control-label">Name</label>
+                <input class="form-control" type="text" disabled  value="@Model.Employees.Name" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Surname</label>
+                <input class="form-control" type="text" disabled value="@Model.Employees.Surname" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="EmployeesId" value="@Model.EmployeesId" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Amount</label>
+                <input asp-for="Amount" class="form-control" />
+                @*<span asp-validation-for="Date" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label class="control-label">Date</label>
+                <input asp-for="Date" class="form-control" />
+                @*<span asp-validation-for="Date" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

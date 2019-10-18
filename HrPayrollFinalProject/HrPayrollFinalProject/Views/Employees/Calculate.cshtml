@@ -1,7 +1,50 @@
-﻿
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 @{
     ViewData["Title"] = "Calculate";
 }
 
-<h1>Calculate</h1>
-
+@model IEnumerable<EmployeeAccuredSalary>
+<div class="row">
+    <div class="col-xl-12">
+        <section class="hk-sec-wrapper">
+            <h5 class="hk-sec-title">Export Table</h5>
+           
+            <div class="row">
+                <div class="col-sm">
+                    <div class="table-wrap">
+                        <table id="datable_3" class="table table-hover w-100 display">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Maas</th>
+                                    <th>Bonus</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.FirstName</td>
+                                        <td>@item.SecondName</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.PhoneNumber</td>
+                                        <td>@item.AccuredSalary</td>
+                                        <td>
+                                            <a asp-controller="Bonus" asp-action="AddBonus" asp-route-id="@item.Id" class="btn btn-yellow">Edit</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- Row End -->

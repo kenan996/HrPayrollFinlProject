@@ -1,0 +1,49 @@
+﻿@model PenaltyViewModel
+@{
+    ViewData["Title"] = "Bonus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Penalty</h1>
+<hr />
+<div>
+    <div class="col-md-4">
+        <form asp-action="AddPenalty" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Name</label>
+                <input type="text" name="" disabled value="@Model.Name" class="form-control" />
+                @*<span asp-validation-for="Amount" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label class="control-label">Surname</label>
+                <input type="text" name="" disabled value="@Model.Surname" class="form-control" />
+                @*<span asp-validation-for="Amount" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="EmployeesId" value="@Model.EmployeesId" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Amount</label>
+                <input type="number" name="Amount" class="form-control" />
+                @*<span asp-validation-for="Date" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label class="control-label">Date</label>
+                <input type="date" name="Date" class="form-control" />
+                @*<span asp-validation-for="Date" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

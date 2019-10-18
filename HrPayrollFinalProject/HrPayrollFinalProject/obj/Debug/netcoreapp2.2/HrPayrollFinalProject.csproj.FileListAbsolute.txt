@@ -45,3 +45,7 @@ C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\AdminRole\Edit.cshtml.g.cs
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\Employees\Calculate.cshtml.g.cs
 C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\Bonus\Index.cshtml.g.cs
+C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\Bonus\AddBonus.cshtml.g.cs
+C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\Penalty\Index.cshtml.g.cs
+C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\Penalty\AddPenalty.cshtml.g.cs
+C:\Users\Kenan\Desktop\FinalProject\HrPayrollFinalProject\HrPayrollFinalProject\obj\Debug\netcoreapp2.2\Razor\Views\Penalty\EditPenalty.cshtml.g.cs

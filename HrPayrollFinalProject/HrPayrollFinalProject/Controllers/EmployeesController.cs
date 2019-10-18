@@ -16,6 +16,7 @@ using static HrPayrollFinalProject.Extensions.IFormExtensions;
 using static HrPayrollFinalProject.Utilities.RemoveFile;
 using HrPayrollFinalProject.ViewModel;
 
+
 namespace HrPayrollFinalProject.Controllers
 {
     [Authorize(Roles = "Admin,Hr")]
@@ -31,6 +32,7 @@ namespace HrPayrollFinalProject.Controllers
         }
 
         // GET: Employees
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Employees.ToListAsync());
@@ -62,8 +64,9 @@ namespace HrPayrollFinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Surname,FathersName,BirthDate,Adress,Influnce,PassportNo,PassportExpireDate,Education,FamilyState,Gender,Photo,")] Employees employees)
+        public async Task<IActionResult> Create([Bind("Id,Name,Surname,FathersName,BirthDate,Email,Number,Adress,Influnce,PassportNo,PassportExpireDate,Education,FamilyState,Gender,Photo,")] Employees employees)
         {
+            var data = await _context.Employees.ToListAsync();
             if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid)
             {
                 return View();
@@ -72,7 +75,7 @@ namespace HrPayrollFinalProject.Controllers
             if (!employees.Photo.IsImage())
             {
                 ModelState.AddModelError("Photo", "File type should be image");
-                return View();
+                return View(data);
             }
 
             string fileName = await employees.Photo.Save(_hostingEnvironment.WebRootPath, "EmployeeImg");
@@ -104,15 +107,12 @@ namespace HrPayrollFinalProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,FathersName,BirthDate,Adress,Influnce,PassportNo,PassportExpireDate,Education,FamilyState,Gender,Photo")] Employees employeeEditViewModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,FathersName,BirthDate,Email,Number,Adress,Influnce,PassportNo,PassportExpireDate,Education,FamilyState,Gender,Photo")] Employees employeeEditViewModel)
         {
-
-
             if (!ModelState.IsValid)
                 return View(employeeEditViewModel);
 
             Employees employeeFromDb = await _context.Employees.FindAsync(id);
-
 
             if (employeeEditViewModel.Photo != null)
             {
@@ -126,10 +126,7 @@ namespace HrPayrollFinalProject.Controllers
                 RemoveImage(_hostingEnvironment.WebRootPath, employeeFromDb.ImageUrl);
                 //Update image
                 employeeFromDb.ImageUrl = await employeeEditViewModel.Photo.Save(_hostingEnvironment.WebRootPath, "EmployeeImg");
-               
 
-
-                
             }
             employeeFromDb.Surname = employeeEditViewModel.Surname;
             employeeFromDb.Name = employeeEditViewModel.Name;
@@ -144,8 +141,6 @@ namespace HrPayrollFinalProject.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-
-
         }
 
     
@@ -188,17 +183,23 @@ namespace HrPayrollFinalProject.Controllers
             return _context.Employees.Any(e => e.Id == id);
         }
 
+        public async Task<ActionResult> Calculate()
+        {
+           var data =  await _context.EmployeeAccureds.ToListAsync();
+            return View(data);
+        }
 
         [HttpPost]
         public async Task<ActionResult> Calculate(int []id)
         {
             //Default
             var salary = 300;
-            if (id.Length == 0)
+            if (id.Length != 0)
             {
                 foreach(var elm in id)
                 {
-                  var data = _context.Employees.Where(x => x.Id == elm)
+                  var data = _context.Employees
+                              .Where(x => x.Id == elm)
                                  .Include(x => x.Bonus)
                                    .Include(x => x.GetVacations)
                                       .Include(x => x.Penalties)
@@ -209,18 +210,29 @@ namespace HrPayrollFinalProject.Controllers
                     var penalty = data.Penalties.Sum(x => x.Amount);
 
                     //mezuniyyetde oldugu gun sayi
-                    var vacationStart= data.GetVacations.Single().StartDate;
-                    var vacationEnd = data.GetVacations.Single().EndDate;
-                    var days = vacationEnd.Day - vacationStart.Day;
+                    //var vacationStart = data.GetVacations.FirstOrDefault().StartDate;
+                    //var vacationEnd = data.GetVacations.FirstOrDefault().EndDate;
+                    //var days = vacationEnd.Day - vacationStart.Day;
 
                     //maas hesabladigin ayin gunu
-                    var day = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+                    //var day = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
 
-                    var price = ((salary / day) * days) + bonus - penalty;
+                    var price = salary + bonus - penalty;
 
+                    EmployeeAccuredSalary accuredSalary = new EmployeeAccuredSalary
+                    {
+                        FirstName = data.Name,
+                        SecondName = data.Surname,
+                        Email=data.Email,
+                        PhoneNumber=data.Number,
+                        AccuredSalary = price
+                    };
+                    _context.EmployeeAccureds.Add(accuredSalary);
+                    await _context.SaveChangesAsync();
                 }
+                await Task.Delay(0);
             }
-            return View();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

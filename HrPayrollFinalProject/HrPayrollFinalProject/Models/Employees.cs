@@ -26,6 +26,12 @@ namespace HrPayrollFinalProject.Models
         [Display(Name ="Birth Date")]
         public DateTime BirthDate { get; set; }
         [Required]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        public int Number { get; set; }
+        [Required]
         public string Adress { get; set; }
         [Required]
         public string Influnce { get; set; }
@@ -49,7 +55,7 @@ namespace HrPayrollFinalProject.Models
         [NotMapped]
         [DataType(DataType.Upload)]
         public IFormFile Photo { get; set; }
-        [StringLength(200)]
+        [StringLength(2000)]
         public string ImageUrl { get; set; }
 
 

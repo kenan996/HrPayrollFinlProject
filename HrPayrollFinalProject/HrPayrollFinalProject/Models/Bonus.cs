@@ -9,14 +9,15 @@ namespace HrPayrollFinalProject.Models
     public class Bonus
     {
         public int Id { get; set; }
-        [Required]
         public int Amount { get; set; }
+    
         [Required]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
-        [Required]
+    
+        public int EmployeesId { get; set; }
         public int EmlpoyeesId { get; set; }
-        [Required]
-        public Employees Employees { get; set; }
+
+        public virtual Employees Employees { get; set; }
     }
 }

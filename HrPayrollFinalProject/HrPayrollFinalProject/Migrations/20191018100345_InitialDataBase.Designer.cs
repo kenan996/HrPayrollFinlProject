@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HrPayrollFinalProject.Migrations
 {
     [DbContext(typeof(PayrollDbContext))]
-    [Migration("20191011160120_initiall")]
-    partial class initiall
+    [Migration("20191018100345_InitialDataBase")]
+    partial class InitialDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -173,6 +173,27 @@ namespace HrPayrollFinalProject.Migrations
                     b.ToTable("Departments");
                 });
 
+            modelBuilder.Entity("HrPayrollFinalProject.Models.EmployeeAccuredSalary", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AccuredSalary");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<int>("PhoneNumber");
+
+                    b.Property<string>("SecondName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmployeeAccureds");
+                });
+
             modelBuilder.Entity("HrPayrollFinalProject.Models.Employees", b =>
                 {
                     b.Property<int>("Id")
@@ -187,6 +208,9 @@ namespace HrPayrollFinalProject.Migrations
                     b.Property<string>("Education")
                         .IsRequired();
 
+                    b.Property<string>("Email")
+                        .IsRequired();
+
                     b.Property<string>("FamilyState")
                         .IsRequired();
 
@@ -198,7 +222,6 @@ namespace HrPayrollFinalProject.Migrations
                         .IsRequired();
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasMaxLength(200);
 
                     b.Property<string>("Influnce")
@@ -207,6 +230,8 @@ namespace HrPayrollFinalProject.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(20);
+
+                    b.Property<int>("Number");
 
                     b.Property<DateTime>("PassportExpireDate");
 

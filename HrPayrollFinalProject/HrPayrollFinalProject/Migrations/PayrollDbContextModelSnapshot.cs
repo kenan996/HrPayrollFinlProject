@@ -171,6 +171,27 @@ namespace HrPayrollFinalProject.Migrations
                     b.ToTable("Departments");
                 });
 
+            modelBuilder.Entity("HrPayrollFinalProject.Models.EmployeeAccuredSalary", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AccuredSalary");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<int>("PhoneNumber");
+
+                    b.Property<string>("SecondName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmployeeAccureds");
+                });
+
             modelBuilder.Entity("HrPayrollFinalProject.Models.Employees", b =>
                 {
                     b.Property<int>("Id")
@@ -183,6 +204,9 @@ namespace HrPayrollFinalProject.Migrations
                     b.Property<DateTime>("BirthDate");
 
                     b.Property<string>("Education")
+                        .IsRequired();
+
+                    b.Property<string>("Email")
                         .IsRequired();
 
                     b.Property<string>("FamilyState")
@@ -204,6 +228,8 @@ namespace HrPayrollFinalProject.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(20);
+
+                    b.Property<int>("Number");
 
                     b.Property<DateTime>("PassportExpireDate");
 

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Penalty>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="row">
+    <div class="col-xl-12">
+        <section class="hk-sec-wrapper">
+            <h5 class="hk-sec-title">Export Table</h5>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="table-wrap">
+                        <table id="datable_3" class="table table-hover w-100 display">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var penalty in Model)
+                                {
+                                <tr>
+                                    <td>@penalty.Employees.Name</td>
+                                    <td>@penalty.Employees.Surname</td>
+                                    <td>@penalty.Amount</td>
+                                    <td>@penalty.Date</td>
+                                    <td>
+                                        <a asp-action="EditPenalty" asp-controller="Penalty" asp-route-id="@penalty.Id" class="btn btn-yellow">Edit</a>
+                                    </td>
+                                    <td>
+                                        <a asp-action="DeletePenalty" asp-controller="Penalty" asp-route-id="@penalty.Id" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

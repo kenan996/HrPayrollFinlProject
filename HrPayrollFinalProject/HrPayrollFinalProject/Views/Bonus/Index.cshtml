@@ -1,37 +1,48 @@
-﻿@model Bonus
+﻿@model IEnumerable<Bonus>
 @{
-    ViewData["Title"] = "Bonus";
+    ViewData["Title"] = "Bonus Table";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Bonus</h1>
-<h4>Employees</h4>
-<hr />
-<div>
-    <div class="col-md-4">
-        <form asp-action="Create" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Amount" class="control-label"></label>
-                <input asp-for="Amount" type="number" class="form-control" />
-                <span asp-validation-for="Amount" class="text-danger"></span>
+<div class="row">
+    <div class="col-xl-12">
+        <section class="hk-sec-wrapper">
+            <h5 class="hk-sec-title">Export Table</h5>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="table-wrap">
+                        <table id="datable_3" class="table table-hover w-100 display">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Bonus</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@item.Employees.Name</td>
+                                    <td>@item.Employees.Surname</td>
+                                    <td>@item.Amount</td>
+                                    <td>@item.Date</td>
+                                    <td>
+                                        <a asp-controller="Bonus" asp-action="AddBonus" asp-route-id="@item.Id" class="btn btn-yellow">Edit</a>
+                                    </td>
+                                    <td>
+                                        <a asp-action="DeleteBonus" asp-controller="Bonus" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" type="date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </section>
     </div>
 </div>
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts{
-    <partial name="_ValidationScriptsPartial" />
-}
-
+<!-- Row End -->

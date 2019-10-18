@@ -1,10 +1,8 @@
 ﻿@model IEnumerable<Employees>
-
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <div class="container">
 
@@ -20,7 +18,7 @@
                 <h5 class="hk-sec-title">Data Table</h5>
                 <form method="post">
                      <div class="form-group">
-                         <input  asp-action="Calculate" type="submit" value="Calculate" class="btn btn-dark"/>
+                         <input asp-action="Calculate" type="submit" value="Calculate" class="btn btn-dark"/>
                      </div>
                     <div class="row">
                         <div class="col-sm">
@@ -32,10 +30,12 @@
                                             <th>Surname</th>
                                             <th>Fathers Name</th>
                                             <th>Birth Date</th>
+                                            <th>Email</th>
+                                            <th>Number</th>
                                             <th>Adress</th>
+                                            <th>Action</th>
                                             <th>Influnce</th>
                                             <th>Passport No</th>
-                                            <th>Action</th>
                                             <th>Passport Expire Date</th>
                                             <th>Education</th>
                                             <th>Family State</th>
@@ -45,6 +45,7 @@
                                             <th>Delete</th>
                                             <th>Details</th>
                                             <th>Bonus</th>
+                                            <th>Penalty</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,10 +56,13 @@
                                             <td>@item.Surname</td>
                                             <td>@item.FathersName</td>
                                             <td>@item.BirthDate</td>
+                                            <td>@item.Email</td>
+                                            <td>@item.Number</td>
                                             <td>@item.Adress</td>
+                                            <td><input type="checkbox" class="checkbox-danger" value="@item.Id" name="[]id" /></td>
                                             <td>@item.Influnce</td>
                                             <td>@item.PassportNo</td>
-                                            <td><input type="checkbox" class="checkbox-danger" value="@item.Id" name="[]id" /></td>
+
                                             <td>@item.PassportExpireDate</td>
                                             <td>@item.Education</td>
                                             <td>@item.FamilyState</td>
@@ -77,8 +81,12 @@
                                                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">Details</a>
                                             </td>
                                             <td>
-                                                <a asp-action="Bonus" asp-route-id="@item.Id" class="btn btn-dark">Bonus</a>
+                                                <a asp-action="AddBonus" asp-controller="Bonus" asp-route-id="@item.Id" class="btn btn-green">Bonus</a>
                                             </td>
+                                            <td>
+                                                <a asp-action="AddPenalty" asp-controller="Penalty" asp-route-id="@item.Id" class="btn btn-brown">Penalty</a>
+                                            </td>
+
                                         </tr>
                                         }
                                     <tfoot>
@@ -87,6 +95,8 @@
                                             <th>Surname</th>
                                             <th>Fathers Name</th>
                                             <th>Birth Date</th>
+                                            <th>Email</th>
+                                            <th>Number</th>
                                             <th>Adress</th>
                                             <th>Influnce</th>
                                             <th>Passport No</th>
@@ -100,6 +110,7 @@
                                             <th>Delete</th>
                                             <th>Details</th>
                                             <th>Bonus</th>
+                                            <th>Penalty</th>
                                         </tr>
                                     </tfoot>
                                 </table>

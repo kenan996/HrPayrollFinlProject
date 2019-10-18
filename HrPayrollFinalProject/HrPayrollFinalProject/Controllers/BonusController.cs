@@ -20,37 +20,55 @@ namespace HrPayrollFinalProject.Controllers
         {
             context = _context;
         }
-        public IActionResult Index()
+
+        public async Task<IActionResult> Index()
         {
+
+            List<Bonus> bonus =await context.Bonus.Include(x => x.Employees).ToListAsync();
+            return View(bonus);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> AddBonus(int? id)
+        {
+            if (id!=null)
+            {
+                var currentEmployee = await context.Employees.Where(x => x.Id == id).FirstOrDefaultAsync();
+                Bonus bonus = new Bonus();
+                if (id != null) { bonus.EmployeesId = Convert.ToInt32(id); }
+                return View(bonus);
+            }
             return View();
         }
 
-        public async Task<ActionResult> Bonus(int? id)
-        {
-            if (id.HasValue)
-            {
-                if (await context.Employees.AnyAsync(x => x.Id == id))
-                {
-                    HttpContext.Session.Set<int>("id", (int)id);
-                    return View();
-                }
-            }
-            return RedirectToAction(nameof(Index));
-        }
         [HttpPost]
-        public async Task<ActionResult> Bonus(Bonus bonus)
+        public async Task<ActionResult> AddBonus([Bind("Id,Amount,Date,EmployeesId")] Bonus bonus)
         {
-            if (ModelState.IsValid)
-            {
-                int id = HttpContext.Session.Get<int>("id");
-
-                if (id != 0)
+                Bonus newBonus = new Bonus
                 {
-                    bonus.EmlpoyeesId = id;
-                    await context.Bonus.AddAsync(bonus);
-                    await context.SaveChangesAsync();
-                }
+                    Amount = bonus.Amount,
+                    Date = bonus.Date,
+                    EmployeesId = bonus.EmployeesId,
+                    EmlpoyeesId=bonus.EmlpoyeesId
+                };
 
+                    await context.Bonus.AddAsync(newBonus);
+                    await context.SaveChangesAsync();
+
+            //return View(nameof(Index),model);
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteBonus(int? id)
+        {
+            if (id != null)
+            {
+                var currentBonus = await context.Bonus.Where(x => x.Id == id).FirstOrDefaultAsync();
+                context.Bonus.Remove(currentBonus);
+                await context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
             return View();
         }
