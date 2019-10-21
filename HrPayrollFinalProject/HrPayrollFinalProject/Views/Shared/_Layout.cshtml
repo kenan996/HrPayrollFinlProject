@@ -122,7 +122,7 @@
                             </li>
                         }
 
-                        @if (User.IsInRole("Admin"))
+                        @if (User.IsInRole("Admin")||User.IsInRole("Hr"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_drp">
@@ -132,15 +132,13 @@
                                 <ul id="auth_drp" class="nav flex-column collapse collapse-level-1">
                                     <li class="nav-item">
                                         <ul class="nav flex-column">
-                                          
                                             <li class="nav-item">
                                                 <a class="nav-link" asp-controller="Penalty" asp-action="Index">Penalty</a>
                                             </li>
-
                                         </ul>
                                     </li>
                                 </ul>
-                            </li>
+                             </li>
                         }
                         @if (User.IsInRole("Admin") || User.IsInRole("Department"))
                         {
@@ -201,7 +199,7 @@
                                 </ul>
                             </li>
                         }
-                        @if (User.IsInRole("Admin") || User.IsInRole("Department")||User.IsInRole("Department"))
+                        @if (User.IsInRole("Admin") || User.IsInRole("Hr")||User.IsInRole("Department"))
                         {
                             <li class="nav-item active">
                                 <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#tables_drp">

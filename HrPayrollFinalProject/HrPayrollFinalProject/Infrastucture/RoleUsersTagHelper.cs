@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace HrPayrollFinalProject.Infrastucture
 {
     [HtmlTargetElement("td",Attributes ="identity-role")]
@@ -23,7 +24,6 @@ namespace HrPayrollFinalProject.Infrastucture
         public string Role { get; set; }
 
         
-         
         public override async  Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             List<string> names = new List<string>();

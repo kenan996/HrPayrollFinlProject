@@ -19,10 +19,9 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Surname</th>
-                                    <th>Amount</th>
-                                    <th>Date</th>
-                                    <th>Maas</th>
-                                    <th>Bonus</th>
+                                    <th>Email</th>
+                                    <th>Number</th>
+                                    <th>Salary</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,9 +33,7 @@
                                         <td>@item.Email</td>
                                         <td>@item.PhoneNumber</td>
                                         <td>@item.AccuredSalary</td>
-                                        <td>
-                                            <a asp-controller="Bonus" asp-action="AddBonus" asp-route-id="@item.Id" class="btn btn-yellow">Edit</a>
-                                        </td>
+                                       
                                     </tr>
                                 }
                             </tbody>

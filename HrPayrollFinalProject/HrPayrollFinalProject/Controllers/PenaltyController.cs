@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HrPayrollFinalProject.Controllers
 {
-    [Authorize(Roles ="Admin,Department")]
+    [Authorize(Roles ="Admin,Hr")]
     public class PenaltyController : Controller
     {
         private readonly PayrollDbContext context;
@@ -29,14 +29,27 @@ namespace HrPayrollFinalProject.Controllers
         [HttpGet]
         public async Task<IActionResult> AddPenalty(int? id)
         {
+
+
+
+            //if (id != null)
+            //{
+            //    var currentEmployee = await context.Employees.Where(x => x.Id == id).FirstOrDefaultAsync();
+            //    Bonus penalty = new Bonus();
+            //    if (id != null) { penalty.EmployeesId = Convert.ToInt32(id); }
+            //    return View(penalty);
+            //}
+            //return View();
+
+
             if (id != null)
             {
                 var currentEmployee = await context.Employees.Where(x => x.Id == id).FirstOrDefaultAsync();
                 PenaltyViewModel vm = new PenaltyViewModel
                 {
                     Name = currentEmployee.Name,
-                    Surname=currentEmployee.Surname,
-                    EmployeesId=currentEmployee.Id
+                    Surname = currentEmployee.Surname,
+                    EmployeesId = currentEmployee.Id
                 };
                 return View(vm);
             }
@@ -45,9 +58,8 @@ namespace HrPayrollFinalProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddPenalty(PenaltyViewModel model)
+        public async Task<IActionResult> AddPenalty([Bind("Amount,Date,EmployeesId,Name,Surname")] PenaltyViewModel model)
         {
-
             if (ModelState.IsValid)
             {
                 Penalty new_penalty = new Penalty()
@@ -60,7 +72,7 @@ namespace HrPayrollFinalProject.Controllers
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction(nameof(Index));
+            return View(model);
         }
 
         [HttpGet]

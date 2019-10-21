@@ -58,7 +58,6 @@ namespace HrPayrollFinalProject.Models
         [StringLength(2000)]
         public string ImageUrl { get; set; }
 
-
         public virtual ICollection<Branch> Branches { get; set; }
         public virtual ICollection<OldWorkPlace> OldWorkPlaces { get; set; }
         public virtual ICollection<WorkPlace> WorkPlaces { get; set; }

@@ -179,7 +179,8 @@ namespace HrPayrollFinalProject.Migrations
 
                     b.Property<int>("AccuredSalary");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
 
                     b.Property<string>("FirstName");
 
@@ -220,7 +221,7 @@ namespace HrPayrollFinalProject.Migrations
                         .IsRequired();
 
                     b.Property<string>("ImageUrl")
-                        .HasMaxLength(200);
+                        .HasMaxLength(2000);
 
                     b.Property<string>("Influnce")
                         .IsRequired();
@@ -229,7 +230,8 @@ namespace HrPayrollFinalProject.Migrations
                         .IsRequired()
                         .HasMaxLength(20);
 
-                    b.Property<int>("Number");
+                    b.Property<int>("Number")
+                        .HasMaxLength(13);
 
                     b.Property<DateTime>("PassportExpireDate");
 

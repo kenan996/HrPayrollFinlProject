@@ -19,7 +19,7 @@ using HrPayrollFinalProject.ViewModel;
 
 namespace HrPayrollFinalProject.Controllers
 {
-    [Authorize(Roles = "Admin,Hr")]
+    [Authorize(Roles = "Admin,Hr,Department")]
     public class EmployeesController : Controller
     {
         private readonly PayrollDbContext _context;
@@ -232,7 +232,7 @@ namespace HrPayrollFinalProject.Controllers
                 }
                 await Task.Delay(0);
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Calculate));
         }
     }
 }

@@ -26,7 +26,7 @@ namespace HrPayrollFinalProject.Controllers
         }
 
         [HttpGet]
-            public async Task<IActionResult> Edit(string Id)
+        public async Task<IActionResult> Edit(string Id)
         {
             IdentityRole role = await roleManager.FindByIdAsync(Id);
             var members = new List<AppUser>();
@@ -48,6 +48,8 @@ namespace HrPayrollFinalProject.Controllers
             };
             return View(model);
         }
+
+
         [HttpPost]
         public async Task<IActionResult> Edit(RoleModelEdit roleModelEdit)
         {
@@ -97,13 +99,7 @@ namespace HrPayrollFinalProject.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-
             return RedirectToAction(nameof(Edit), roleModelEdit.RoleId);
         }
-
-
-
-
     }
-
 }

@@ -28,7 +28,7 @@ namespace HrPayrollFinalProject.DAL
         public DbSet<WorkPlace> WorkPlaces { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<EmployeeAccuredSalary> EmployeeAccureds { get; set; }
-
+      
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
