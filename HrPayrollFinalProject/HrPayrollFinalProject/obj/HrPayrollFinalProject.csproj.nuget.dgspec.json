@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kenan\\Desktop\\FinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject.csproj": {}
+    "C:\\Users\\kbehb\\OneDrive\\Desktop\\FinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kenan\\Desktop\\FinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject.csproj": {
+    "C:\\Users\\kbehb\\OneDrive\\Desktop\\FinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kenan\\Desktop\\FinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject.csproj",
+        "projectUniqueName": "C:\\Users\\kbehb\\OneDrive\\Desktop\\FinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject.csproj",
         "projectName": "HrPayrollFinalProject",
-        "projectPath": "C:\\Users\\Kenan\\Desktop\\FinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject.csproj",
-        "packagesPath": "C:\\Users\\Kenan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kenan\\Desktop\\FinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject\\obj\\",
+        "projectPath": "C:\\Users\\kbehb\\OneDrive\\Desktop\\FinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject.csproj",
+        "packagesPath": "C:\\Users\\kbehb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kbehb\\OneDrive\\Desktop\\FinalProject\\HrPayrollFinalProject\\HrPayrollFinalProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Kenan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kbehb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

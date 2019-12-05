@@ -230,8 +230,7 @@ namespace HrPayrollFinalProject.Migrations
                         .IsRequired()
                         .HasMaxLength(20);
 
-                    b.Property<int>("Number")
-                        .HasMaxLength(13);
+                    b.Property<int>("Number");
 
                     b.Property<DateTime>("PassportExpireDate");
 

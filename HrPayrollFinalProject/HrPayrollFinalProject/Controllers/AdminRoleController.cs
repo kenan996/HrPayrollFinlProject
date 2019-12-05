@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HrPayrollFinalProject.Controllers
-{
+{   
     [Authorize(Roles = "Admin")]
     public class AdminRoleController : Controller
     {
@@ -49,7 +49,6 @@ namespace HrPayrollFinalProject.Controllers
             return View(model);
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Edit(RoleModelEdit roleModelEdit)
         {
@@ -68,11 +67,10 @@ namespace HrPayrollFinalProject.Controllers
                         {
                             foreach (var item in result.Errors)
                             {
-                                ModelState.AddModelError("", item.Description);
+                                ModelState.AddModelError("", item.Description); 
                             }
                         }
                     }
-
                 }
 
                 foreach (var userId in roleModelEdit.IdToDelete ?? new string[] { })
@@ -98,7 +96,6 @@ namespace HrPayrollFinalProject.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-
             return RedirectToAction(nameof(Edit), roleModelEdit.RoleId);
         }
     }

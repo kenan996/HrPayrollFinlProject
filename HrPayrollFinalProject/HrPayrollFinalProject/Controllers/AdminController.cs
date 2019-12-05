@@ -109,7 +109,7 @@ namespace HrPayrollFinalProject.Controllers
                 user.UserName = Username;
                 user.Email = Email;
                 IdentityResult validPassword = null;
-
+                
                 if (!string.IsNullOrEmpty(Password))
                 {
                     validPassword = await passwordValidator.ValidateAsync(userManager, user, Password);
